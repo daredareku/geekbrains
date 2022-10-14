@@ -38,8 +38,13 @@ class numbers14OCT2022
         int b = Convert.ToInt32(Console.ReadLine());
         Console.WriteLine("Введите с");
         int c = Convert.ToInt32(Console.ReadLine());
-        if (a > b)
+        int max = a > b ? a : b;
+        if (c > max)
         {
+            max = c;
+        }
+        /*
+        { 
 
 
         }
@@ -54,7 +59,8 @@ class numbers14OCT2022
         else
         {
         }
-        
+        */
+        Console.WriteLine(max);
     }
 //}
 
