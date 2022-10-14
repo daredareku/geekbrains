@@ -1,8 +1,13 @@
 // которая на входе принимает два числа, и выдает какое число больше, а какое меньше.
 // Если числа равны, то выдает сообщение "Числа равны".
-class numbers14OCT2022
+
+namespace Application
 {
-    static void Main(string[] args)
+    
+
+public class numbers14OCT2022
+{
+    static void Main1(string[] args)
     {
         Console.WriteLine("Введите первое число");
         int a = Convert.ToInt32(Console.ReadLine());
@@ -102,9 +107,21 @@ class numbers14OCT2022
         }
     }
 }
-{    
-    Main;
-    Main2;
-    Main3;
-    Main4;
+
+//program.Run();
+class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Hello World!");
+    
+    
+//{    
+    numbers14OCT2022.Main1();
+    Main2();
+    Main3();
+    Main4();
+
+        }
+        }
 }
