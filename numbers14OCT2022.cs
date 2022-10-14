@@ -24,15 +24,8 @@ namespace Application
                 Console.WriteLine("Числа равны");
             }
         }
-        //}
-        //{
-
-        //}
-
         // которая на входе принимает три числа, и выдает максимальное из них.
 
-        //class numbers14OCT2022
-        //{
         static void Main2(string[] args)
         {
             Console.WriteLine("Введите п");
@@ -46,32 +39,12 @@ namespace Application
             {
                 max = c;
             }
-            /*
-            { 
-
-
-            }
-            else if (c < b)
-            {
-            }
-            else if (a < c)
-            {
-
-            }
-
-            else
-            {
-            }
-            */
             Console.WriteLine(max);
         }
-        //}
 
         // которая на входе принимает число, и выдает является ли оно четным или нечетным. (делится на 2 без остатка или с остатком)
         //
 
-        //class numbers14OCT2022
-        //{
         static void Main3(string[] args)
         {
             Console.WriteLine("Введите п");
@@ -84,16 +57,9 @@ namespace Application
             {
                 Console.WriteLine("Число нечетное");
             }
-            {
-                //  
-            }
         }
-        //}
 
         // которая на входе принимает число, и выдает все чётные числа от 1 до этого числа.
-
-        //class numbers14OCT2022
-        //{
         static void Main4(string[] args)
         {
             Console.WriteLine("Введите п);");
@@ -109,16 +75,11 @@ namespace Application
             static void Main(string[] args)
             {
                 Console.WriteLine("Hello World!");
-                //numbers num = numbers.Main1();
                 numbers.Main1(null);
                 numbers.Main2(null);
                 numbers.Main3(null);
                 numbers.Main4(null);
-
             }
         }
     }
-
-    //program.Run();
-    
 }
