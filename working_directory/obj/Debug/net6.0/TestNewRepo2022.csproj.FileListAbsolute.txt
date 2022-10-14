@@ -1,0 +1,15 @@
+C:\1\Downloads\GitHub\KGB\Python_ML\geekbrains\working_directory\obj\Debug\net6.0\TestNewRepo2022.csproj.AssemblyReference.cache
+C:\1\Downloads\GitHub\KGB\Python_ML\geekbrains\working_directory\obj\Debug\net6.0\TestNewRepo2022.GeneratedMSBuildEditorConfig.editorconfig
+C:\1\Downloads\GitHub\KGB\Python_ML\geekbrains\working_directory\obj\Debug\net6.0\TestNewRepo2022.AssemblyInfoInputs.cache
+C:\1\Downloads\GitHub\KGB\Python_ML\geekbrains\working_directory\obj\Debug\net6.0\TestNewRepo2022.AssemblyInfo.cs
+C:\1\Downloads\GitHub\KGB\Python_ML\geekbrains\working_directory\obj\Debug\net6.0\TestNewRepo2022.csproj.CoreCompileInputs.cache
+C:\1\Downloads\GitHub\KGB\Python_ML\geekbrains\working_directory\bin\Debug\net6.0\TestNewRepo2022.exe
+C:\1\Downloads\GitHub\KGB\Python_ML\geekbrains\working_directory\bin\Debug\net6.0\TestNewRepo2022.deps.json
+C:\1\Downloads\GitHub\KGB\Python_ML\geekbrains\working_directory\bin\Debug\net6.0\TestNewRepo2022.runtimeconfig.json
+C:\1\Downloads\GitHub\KGB\Python_ML\geekbrains\working_directory\bin\Debug\net6.0\TestNewRepo2022.dll
+C:\1\Downloads\GitHub\KGB\Python_ML\geekbrains\working_directory\bin\Debug\net6.0\TestNewRepo2022.pdb
+C:\1\Downloads\GitHub\KGB\Python_ML\geekbrains\working_directory\obj\Debug\net6.0\TestNewRepo2022.dll
+C:\1\Downloads\GitHub\KGB\Python_ML\geekbrains\working_directory\obj\Debug\net6.0\refint\TestNewRepo2022.dll
+C:\1\Downloads\GitHub\KGB\Python_ML\geekbrains\working_directory\obj\Debug\net6.0\TestNewRepo2022.pdb
+C:\1\Downloads\GitHub\KGB\Python_ML\geekbrains\working_directory\obj\Debug\net6.0\TestNewRepo2022.genruntimeconfig.cache
+C:\1\Downloads\GitHub\KGB\Python_ML\geekbrains\working_directory\obj\Debug\net6.0\ref\TestNewRepo2022.dll
