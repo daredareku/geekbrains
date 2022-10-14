@@ -28,11 +28,11 @@ namespace Application
 
         static void Main2(string[] args)
         {
-            Console.WriteLine("Введите п");
+            Console.WriteLine("Введите первое число");
             int a = Convert.ToInt32(Console.ReadLine());
-            Console.WriteLine("Введите в)");
+            Console.WriteLine("Введите второе число;");
             int b = Convert.ToInt32(Console.ReadLine());
-            Console.WriteLine("Введите с");
+            Console.WriteLine("Введите третье число");
             int c = Convert.ToInt32(Console.ReadLine());
             int max = a > b ? a : b;
             if (c > max)
@@ -47,7 +47,7 @@ namespace Application
 
         static void Main3(string[] args)
         {
-            Console.WriteLine("Введите п");
+            Console.WriteLine("Введите первое число");
             int a = Convert.ToInt32(Console.ReadLine());
             if (a % 2 == 0)
             {
@@ -62,7 +62,7 @@ namespace Application
         // которая на входе принимает число, и выдает все чётные числа от 1 до этого числа.
         static void Main4(string[] args)
         {
-            Console.WriteLine("Введите п);");
+            Console.WriteLine("Введите первое число");
             int a = Convert.ToInt32(Console.ReadLine());
             int length = a;
             for (int i = 0; i < length; i++)
@@ -74,7 +74,7 @@ namespace Application
         {
             static void Main(string[] args)
             {
-                Console.WriteLine("Hello World!");
+                Console.WriteLine("Hello World 2022!");
                 numbers.Main1(null);
                 numbers.Main2(null);
                 numbers.Main3(null);
