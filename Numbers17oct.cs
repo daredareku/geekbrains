@@ -39,6 +39,7 @@ namespace Application
                     break;
                 } //&& k==b)flag=true; //++;
             }
+            if(i<5) Console.WriteLine("No 5 digit number");
             
             if(flag)
             {
