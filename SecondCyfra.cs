@@ -20,30 +20,24 @@ namespace Application
         // которая принимает  число, а на выходе показывает третью цифру этого числа, или сообщает что третьей цифры нет.
         static void Main21(string[] args)
         {
-            Console.WriteLine("Enter  number: ");
+            int[] aa = new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+            Console.WriteLine("Enter  number for 3th digit: ");
             int a = Convert.ToInt32(Console.ReadLine());
-            int b, c, d;
-            c = 0;
+            int b, c;
+            c = 9;
             b=0;
-            d=a%10;
-            while (a >= 10)
+            while (a > 0)
             {
-                a = a / 10;
                 b = a % 10;
-                c++;
+                a = a / 10;
+                c--;
+                aa[c] = b;
             }
-            if(c==2)
-                Console.WriteLine(d);
+            if(c>=7)
+                Console.WriteLine("No third cyfra. Нет третьей цифры");
             else
-                //Console.WriteLine("No third cyfra");
-            if (c >= 3)
-            {
-                Console.WriteLine(b);
-            }
-            else
-            {
-                Console.WriteLine("No third number");
-            }   
+                Console.WriteLine("Third cyfra is: " + aa[c+2]);    //]);    
+            
         }
 
         static void Main3(string[] args)
