@@ -16,10 +16,15 @@ namespace Application
                     {
                         args[i] = args[i] * (-1);
                     }
-                    else
+                    else // нужно ли делать оптимизацию и не делать else?
                     {
                         args[i] = args[i] * (-1);
                     }
+                    /*
+                    {
+                        args[i] = args[i] * (-1);
+                    }
+                    */
                 }
                 
             }
@@ -192,7 +197,7 @@ namespace Application
             {
                 Console.WriteLine("Hello World 2022!");
                 if(debug){
-                
+                // 
                 Console.WriteLine("Enter a size number");
                 int size = int.Parse(Console.ReadLine());
                 int minValue=int.Parse(Console.ReadLine());
