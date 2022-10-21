@@ -5,21 +5,30 @@ namespace Application
 {
     public class Numbers
     {
+        static bool debug=false;
+
             static void Main32(int[] args)
             {// которая заменит все отрицательные элементы массива на положительные, и наоборот.
                 int n = int.Parse(Console.ReadLine());
                 for (int i = 0; i < n; i++)
-                {
+                {  
+                  if(debug){  
                     if (args[i] < 0)
                     {
                         args[i] = args[i] * (-1);
                     }
-                    else
+                    else // нужно ли делать оптимизацию и не делать else?
                     {
                         args[i] = args[i] * (-1);
                     }
+                  }else{
+                   
+                    {
+                        args[i] = args[i] * (-1);
+                    }
+                   
+                  }
                 }
-
                 
             }
 
@@ -45,6 +54,42 @@ namespace Application
                 {
                     Console.WriteLine("No");
                 }
+            }
+
+            static void Main35(int asize, int[] arr)
+            {// задайте одномерный массив из 123 случайных чисел, и найдите количество элементов массивыа, значения которых между [10, 99].
+            //int n = int.Parse(Console.ReadLine());
+            //int n = int.Parse(Console.ReadLine());                  
+                int size=123;
+                int b=0;
+                int[] a = new int[size]; // CreateArray(size, 0, 150);
+                a=CreateArray(size, 0, 150); //int.MinValue, int.MaxValue);            
+                for (int i = 0; i < a.Length; i++)
+                {
+                    if (a[i] >= 10 && a[i] <= 99)
+                    {
+                        b++;
+                    }
+                }
+                System.Console.WriteLine(b);
+
+            }
+
+            static void Main37(int asize, int[] ar)
+            {// которая определяет произведение пар чисел в одномерном массиве. 
+            // парой считаем первый и последний элемент, второйй и предпоследний и т.д.
+                int n = int.Parse(Console.ReadLine());
+                int[] a = new int[n];
+                for (int i = 0; i < n; i++)
+                {
+                    a[i] = int.Parse(Console.ReadLine());
+                }
+                int b = 0;
+                for (int i = 0; i < n / 2; i++)
+                {
+                    b = b + a[i] * a[n - i - 1];
+                }
+                System.Console.WriteLine(b);
             }
 
             static void Main34(string[] args)
@@ -140,19 +185,36 @@ namespace Application
                 Console.WriteLine(b - c);
             }
 
-
-
-
+            static int[] CreateArray(int size, int minValue, int maxValue)
+            {
+                int[] array = new int[size];
+                Random rnd = new Random();
+                for (int i = 0; i < array.Length; i++)
+                {
+                    array[i] = new Random().Next(minValue, maxValue);
+                }
+                return array;
+            }
 
             static void Main(string[] args)
             {
                 Console.WriteLine("Hello World 2022!");
-                Main32(args);
-                Main33(args);
+                if(debug){
+                // 
+                Console.WriteLine("Enter a size number");
+                int size = int.Parse(Console.ReadLine());
+                int minValue=int.Parse(Console.ReadLine());
+                int maxValue=int.Parse(Console.ReadLine());
+                int[] array = Numbers.CreateArray(size, minValue, maxValue);
+                
+                Main32(array);
+                array = Numbers.CreateArray(size, minValue, maxValue);
+
+                Main33(array, 5);
+            }
                 Main34(args);
                 Main36(args);
                 Main38(args);
             }
-        
     }
 }
