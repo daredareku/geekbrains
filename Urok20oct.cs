@@ -5,6 +5,48 @@ namespace Application
 {
     public class Numbers
     {
+            static void Main32(int[] args)
+            {// которая заменит все отрицательные элементы массива на положительные, и наоборот.
+                int n = int.Parse(Console.ReadLine());
+                for (int i = 0; i < n; i++)
+                {
+                    if (args[i] < 0)
+                    {
+                        args[i] = args[i] * (-1);
+                    }
+                    else
+                    {
+                        args[i] = args[i] * (-1);
+                    }
+                }
+
+                
+            }
+
+            static void Main33(int[] ar, int a)
+            {// которая определяет присутствует ли в массиве элемент с ЗАДАННЫМ значением .
+                //int n = int.Parse(Console.ReadLine());
+                bool flag = false;
+                for (int i = 0; i < ar.Length; i++)
+                {
+                    if (ar[i] == a)
+                    {
+                        flag = true;
+                        Console.WriteLine("Yes");
+                        break;
+                    }
+                    else
+                    {
+                        flag=false;
+                        //Console.WriteLine("No");
+                    }
+                }
+                if (flag == false)
+                {
+                    Console.WriteLine("No");
+                }
+            }
+
             static void Main34(string[] args)
             { // Задайте массив заполненный случайными положительными трёхзначными числами. Напишите программу, которая покажет количество чётных чисел в массиве.
                 int[] a = new int[10];
@@ -105,6 +147,8 @@ namespace Application
             static void Main(string[] args)
             {
                 Console.WriteLine("Hello World 2022!");
+                Main32(args);
+                Main33(args);
                 Main34(args);
                 Main36(args);
                 Main38(args);
