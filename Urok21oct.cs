@@ -28,50 +28,6 @@ namespace Application
                 }
             }
 
-            /*         
-            int n=args[0];
-            int m=args[1];
-            int s=args[2];
-            int e=args[3];
-            int d=args[4];
-            int r=args[5];
-            int q=args[6];
-            int t=args[7];
-            int u=args[8];
-            int v=args[9];
-            int w=args[10];
-            int x=args[11];
-            int y=args[12];
-            int z=args[13];
-            if (debug)
-            {
-            }
-            else
-            {
-                Console.WriteLine("Enter 14 numbers: ");
-                n = int.Parse(Console.ReadLine());
-                m = int.Parse(Console.ReadLine());
-                s = int.Parse(Console.ReadLine());
-                e = int.Parse(Console.ReadLine());
-                d = int.Parse(Console.ReadLine());
-                r = int.Parse(Console.ReadLine());
-                q = int.Parse(Console.ReadLine());
-                t = int.Parse(Console.ReadLine());
-                u = int.Parse(Console.ReadLine());
-                v = int.Parse(Console.ReadLine());
-                w = int.Parse(Console.ReadLine());
-                x = int.Parse(Console.ReadLine());
-                y = int.Parse(Console.ReadLine());
-                z = int.Parse(Console.ReadLine());
-            }
-            */
-            /*
-            int[] arr = new int[14];
-            for (int i = 0; i < 14; i++)
-            {
-                arr[i] = 0;
-            }
-            */
             System.Console.WriteLine("41. Counting numbers > 0: " + mycount);
         }
 
@@ -239,37 +195,7 @@ namespace Application
 
             return newArray;
         }
-/*
-        static string ArrayToString(int[] array)
-        {
-            string result = string.Empty;
-
-            for (int i = 0; i < array.Length; i++)
-            {
-                result += array[i] + " ";
-            }
-
-            return result;
-        }
-*/
-        //static 
         int[] array = CreateArray(10);
-        /*
-        Console.WriteLine(ArrayToString(array));
-        Console.WriteLine(ArrayToString(CopyArray(array)));
-
-	{
-		emptyArray[i] = emptyArray[i - 1] + emptyArray[i - 2];
-	}
-
-	return emptyArray;
-}
-
-
-        int[] fib = CreateEmptyArrayForFibbonachi(8);
-        fib = GetFibonachi(fib);
-        Console.WriteLine(ArrayToString(fib));
-*/
 
         static void PrintArray(double[] arr)
         {
@@ -298,10 +224,10 @@ namespace Application
                 Console.WriteLine(ArrayToString(newArray));
 
                 Transporate(array);
-                System.Console.WriteLine("Transporate: "); // + ArrayToString(array));
+                System.Console.WriteLine("Transporate: "); // 
                 Console.WriteLine(ArrayToString(array));
-                System.Console.WriteLine("Fibo: "); // + ArrayToString(fibo));
-                Fibo(70); //array.Length);
+                System.Console.WriteLine("Fibo: "); // 
+                Fibo(70); //
             }
             Main41(new int[] { 0, 7, 8, -2, -2 });
             Main43(new int[] { 0, 7, 8, -2, -2 });
