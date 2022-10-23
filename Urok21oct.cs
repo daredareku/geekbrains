@@ -23,7 +23,6 @@ namespace Application
             {
                 if (args[i] > 0)
                 {
-                    //arr[i] = 1;
                     mycount++;
                 }
             }
@@ -84,13 +83,6 @@ namespace Application
             {
                 arr[i] = args[args.Length - i - 1];
             }
-            /*
-            for (int i = 0; i < args.Length; i++)
-            {
-                //Console.WriteLine(arr[i]);
-                arr[i] = args[i];
-            }
-            */
             return arr;
 
         }
@@ -159,15 +151,12 @@ namespace Application
         static void Fibo(int N)
         { // 44. Напишите программу, которая выведет на экран первые N чисел Фибоначчи, не используя рекурсию.
             double[] fibo = new double[N];
-            //int result = 0;
             fibo[0] = 0; //(0)
             fibo[1] = 1; //(1)
 
             for (int i = 2; i < N; i++)
             {
                 fibo[i] = fibo[i - 1] + fibo[i - 2];
-                //result += i;
-                //System.Console.WriteLine(result);
             }
             PrintArray(fibo);
         }
