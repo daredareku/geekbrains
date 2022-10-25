@@ -7,7 +7,8 @@ namespace Application
     {
         static bool debug = false;
 
-        static double[,] Main47(double[,] arr) /*
+        static double[,]
+        Main47(double[,] arr) /*
         Задача 47. Задайте двумерный массив размером m×n, заполненный случайными вещественными числами.
 
 m = 3, n = 4.
@@ -23,14 +24,11 @@ m = 3, n = 4.
             int count = 0;
             for (int i = 0; i < arr.GetLength(0); i++)
             {
-                //if (arr[i] >= 10 && arr[i] <= 99)
                 for (int j = 0; j < arr.GetLength(1); j++)
                 {
-                    //count++;
                     arr[i, j] = rnd.Next(10, 99);
                 }
             }
-            //Console.WriteLine (count);
             return arr;
         }
 
@@ -58,22 +56,11 @@ m = 3, n = 4.
             {
                 Console.WriteLine(array[x, y]);
             }
-
-/*
-            if (array[x, y] == 0)
-            {
-                Console.WriteLine("No such number in array");
-            }
-            else
-            {
-                Console.WriteLine(array[x, y]);
-            }
-            */
-            return (int)(array[x, y]); // Math.round ToInt32
+            return (int)(array[x, y]); //
         }
 
         static int[]
-        Main52(int[,] array, int x, int y) /*
+        Main52(int[,] array) /*
 Задача 52. Задайте двумерный массив из целых чисел. Найдите среднее арифметическое элементов в каждом столбце.
 
 Например, задан массив:
@@ -94,9 +81,6 @@ m = 3, n = 4.
             }
             return result;
 
-            //int i = 0;
-            //int j = 0;
-            //int sum[] = new int[array.GetLength(1)];
             for (int i = 0; i < array.Length; i++)
             {
                 for (int j = 0; j < array.Length; j++)
@@ -107,7 +91,6 @@ m = 3, n = 4.
         }
 
         int[,] array = new int[4, 5];
-
 
         static string ArrayToString(double[,] array)
         {
@@ -128,7 +111,6 @@ m = 3, n = 4.
 
         static int[,] Main48(int[,] array)
         {
-            //int[,] array = new int[4, 5];
             for (int i = 0; i < array.GetLength(0); i++)
             {
                 for (int j = 0; j < array.GetLength(1); j++)
@@ -137,7 +119,6 @@ m = 3, n = 4.
                 }
             }
             return array;
-
         }
 
         static void PrintArray(int[,] array)
@@ -157,27 +138,21 @@ m = 3, n = 4.
         {
             for (int i = 0; i < array.GetLength(0); i++)
             {
-                //for (int j = 0; j < array.GetLength(1); j++)
-                //{
-                    Console.Write($"{array[i]} ");
-                //}
-
-                
+                Console.Write($"{array[i]} ");
             }
             Console.WriteLine();
         }
 
         static int[,] Main49(int[,] array)
         {
-            //int[,] array = new int[4, 5];
             for (int i = 0; i < array.GetLength(0); i++)
             {
                 for (int j = 0; j < array.GetLength(1); j++)
                 {
-                    if(i%2 == 0 && j%2 == 0){
-                        array[i, j] = array[i , j]*array[i , j];
+                    if (i % 2 == 0 && j % 2 == 0)
+                    {
+                        array[i, j] = array[i, j] * array[i, j];
                     }
-                    //array[i, j] = i + j;
                 }
             }
             return array;
@@ -209,58 +184,56 @@ m = 3, n = 4.
             return array;
         }
 
-        static int Main51(int[,] array, int x, int y) 
+        static int Main51(int[,] array, int x, int y)
         {
             int summ = 0;
             for (int i = 0; i < array.GetLength(0); i++)
             {
                 for (int j = 0; j < array.GetLength(1); j++)
                 {
-                    if(i == j){
-                        //array[i, j] = array[i , j]*array[i , j];
+                    if (i == j)
+                    {
                         summ += array[i, j];
                     }
-                    //array[i, j] = i + j;
                 }
             }
             return summ;
         }
 
-
         static void Main(string[] args)
         {
             int[,] array = new int[4, 5];
             PrintArray(Main48(array));
-            int [,] arr=RandomArray(new int[array.GetLength(0), array.GetLength(1)]);
-            PrintArray(arr);
+            int[,] arr =
+                RandomArray(new int[array.GetLength(0), array.GetLength(1)]);
+            PrintArray (arr);
             System.Console.WriteLine("ArrayQuad");
             PrintArray(Main49(arr));
-            int [,] arr1=RandomArray(new int[array.GetLength(0), array.GetLength(1)]);
-            System.Console.WriteLine("sum51="+Main51(arr1, 0, 0));
-            //System.Console.WriteLine(Main51(array, 1, 2));
+            int[,] arr1 =
+                RandomArray(new int[array.GetLength(0), array.GetLength(1)]);
+            System.Console.WriteLine("sum51=" + Main51(arr1, 0, 0));
+
             System.Console.WriteLine("Our Array");
-            PrintArray(arr1);
+            PrintArray (arr1);
+            System.Console.WriteLine("");
             System.Console.WriteLine("ArrayToString47");
 
-            double [,] arr2=RandomArray(new double[array.GetLength(0), array.GetLength(1)]);
-            //int x = int.Parse(args[0]);
-            Console.WriteLine(ArrayToString(Main47 (arr2)));
-            
+            double[,] arr2 =
+                RandomArray(new double[array.GetLength(0), array.GetLength(1)]);
+            Console.WriteLine(ArrayToString(Main47(arr2)));
+
             System.Console.WriteLine("ArrayToString50, Enter coordinates:");
-            int x = int.Parse(Console.ReadLine() );
-            //int y = int.Parse(args[0]);
+            int x = int.Parse(Console.ReadLine());
             int y = int.Parse(Console.ReadLine());
-            System.Console.WriteLine(Main50 (arr2, x, y));
+            System.Console.WriteLine("Element=" + Main50(arr2, x, y));
+
             System.Console.WriteLine("ArrayToString52 coordinates:");
 
             PrintArray(Main52(new int[,] {
                 { 1, 4, 7, 2 },
                 { 5, 9, 2, 3 },
                 { 8, 4, 2, 4 }
-            },
-            0,
-            0) );
-            
+            }));
         }
     }
 }
