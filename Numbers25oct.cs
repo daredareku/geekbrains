@@ -27,18 +27,21 @@ namespace Application
             return arr;
         }
 
-        static double[] PrintArray(double[] arr)
+        static void PrintArray(double[,] array)
         {
-            return arr;
-        }
-
-        static double[] CopyArray2(double[] arr)
-        {
-            return arr;
+            for (int i = 0; i < array.GetLength(0); i++)
+            {
+                for (int j = 0; j < array.GetLength(1); j++)
+                {
+                    Console.Write(array[i, j] + " ");
+                }
+                Console.WriteLine();
+            }
+            //return arr;
         }
 
         static int[,]
-        CreateArray(int m, int n) //double[] arr){
+        CreateArray(int m, int n) 
         {
             int[,] a = new int[m, n];
             for (int i = 0; i < m; i++)
@@ -97,7 +100,7 @@ namespace Application
             return arr;
         }
 
-        static double[,] Main56(double[,] arr)
+        static int Main56(double[,] arr)
         {
             /*
 Задача 56: Задайте прямоугольный двумерный массив. Напишите программу, которая будет находить строку с наименьшей суммой элементов.
@@ -114,10 +117,23 @@ namespace Application
 
 Программа считает сумму элементов в каждой строке и выдаёт номер строки с наименьшей суммой элементов: 1 строка
 */
-            return arr;
+            int n = arr.GetLength(0);
+            int count = 0;
+            double[] arr2 = new double[n];
+            double[] arr1 = new double[arr.GetLength(0)];
+            for (int i = 0; i < arr.GetLength(0); i++)
+            {
+                //double[] arr2=CopyString(arr[i]);
+                for (int j = 0; j < arr.GetLength(1); j++)
+                {
+                    arr1[i] += arr[i, j];
+                }
+            }
+            System.Console.WriteLine("min Line number: ");
+            return count;
         }
 
-        static double[,] Main58(double[,] arr)
+        static double[,] Main58(double[,] arr1, double[,] arr2)
         {
             /*
 Задача 58: Задайте две матрицы. Напишите программу, которая будет находить произведение двух матриц.
@@ -128,7 +144,38 @@ namespace Application
 18 20
 15 18
 */
-            return arr;
+            double[,] arr3 = new double[arr1.GetLength(0), arr2.GetLength(1)];
+            double sum = 0;
+
+            for (int i = 0; i < arr1.GetLength(0); i++)
+            {
+                //double[] arr2=CopyString(arr[i]);
+                for (int j = 0; j < arr2.GetLength(1); j++)
+                {
+                    // произведение двух матриц.
+                    sum=0;
+                    for (int k = 0; k < arr2.GetLength(0); k++)
+                    {
+                        sum += arr2[j, i]*arr1[i, j];
+                        
+                    }
+                    arr3[i, j] = sum; // arr1[i, j] * arr2[j, i];
+                }
+            }
+
+            return arr3;
+        }
+
+        static void Main60(double[,,] arr1)
+        {
+            arr1 = new double[2, 2, 2];
+            /*    
+
+    int n = arr1.GetLength(0);
+            int count = 0;
+
+
+            return arr3;
         }
 
         static double[,] Main60(double[,] arr)
@@ -141,10 +188,11 @@ namespace Application
 27(0,0,1) 90(0,1,1)
 26(1,0,1) 55(1,1,1)
 */
-            return arr;
+
+            //return arr;
         }
 
-        static double[,] Main70(double[,] arr)
+        static double[,] Main62(double[,] arr)
         {
             /*
 Задача 62. Напишите программу, которая заполнит спирально массив 4 на 4.
@@ -154,6 +202,17 @@ namespace Application
 11 16 15 06
 10 09 08 07
 */
+            int n = arr.GetLength(0);
+            int count = 0;
+            double[,] arr2 = new double[n, n];
+            for (int i = 0; i < n; i++)
+            {
+                for (int j = 0; j < n; j++)
+                {
+                    arr2[i, j] = 0;
+                }
+            }
+
             return arr;
         }
 
@@ -321,6 +380,24 @@ PrintArray(GetDictionary(array));
             }
         }
 
+        static double[,] CreateArray2(int m, int n)
+        {
+
+            double[,] array = new double[m, n];
+
+            Random random = new Random();
+
+            for (int i = 0; i < array.GetLength(0); i++)
+            {
+                for (int j = 0; j < array.GetLength(1); j++)
+                {
+                    array[i, j] = random.Next(1, 20);
+                }
+            }
+
+            return array;
+        }
+
         static int[,] CreateArray1(int m, int n)
         {
             int[,] array = new int[m, n];
@@ -480,7 +557,6 @@ PrintArray(newArray);
                     }
                 }
             }
-
             return newArray;
         }
 
@@ -488,7 +564,11 @@ PrintArray(newArray);
         {
             double[,] arr = new double[5, 5];
             int[,] arr1 = new int[5, 5];
+            System.Console.WriteLine("The array 57:");
             Main57 (arr1);
+            System.Console.WriteLine("Array 62:");
+            PrintArray(Main62(CreateArray2(5-1, 5-1)));
+            System.Console.WriteLine("Array 61:");
         }
     }
 
