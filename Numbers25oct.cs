@@ -40,8 +40,7 @@ namespace Application
             //return arr;
         }
 
-        static int[,]
-        CreateArray(int m, int n) 
+        static int[,] CreateArray(int m, int n)
         {
             int[,] a = new int[m, n];
             for (int i = 0; i < m; i++)
@@ -129,6 +128,7 @@ namespace Application
                     arr1[i] += arr[i, j];
                 }
             }
+
             System.Console.WriteLine("min Line number: ");
             return count;
         }
@@ -149,38 +149,25 @@ namespace Application
 
             for (int i = 0; i < arr1.GetLength(0); i++)
             {
-                //double[] arr2=CopyString(arr[i]);
                 for (int j = 0; j < arr2.GetLength(1); j++)
                 {
                     // произведение двух матриц.
-                    sum=0;
-                    for (int k = 0; k < arr2.GetLength(0); k++)
+                    sum = 0;
+                    for (int k = 0; k < arr1.GetLength(1); k++)
                     {
-                        sum += arr2[j, i]*arr1[i, j];
-                        
+                        sum += arr2[k, j] * arr1[i, k];
                     }
-                    arr3[i, j] = sum; // arr1[i, j] * arr2[j, i];
+                    arr3[i, j] = sum;
                 }
             }
 
             return arr3;
         }
 
-        static void Main60(double[,,] arr1)
+        static void Main60()
         {
-            arr1 = new double[2, 2, 2];
+            double[,,] arr1 = new double[2, 2, 2];
             /*    
-
-    int n = arr1.GetLength(0);
-            int count = 0;
-
-
-            return arr3;
-        }
-
-        static double[,] Main60(double[,] arr)
-        {
-            /*
 Задача 60. ...Сформируйте трёхмерный массив из неповторяющихся двузначных чисел. Напишите программу, которая будет построчно выводить массив, добавляя индексы каждого элемента.
 Массив размером 2 x 2 x 2
 66(0,0,0) 25(0,1,0)
@@ -188,11 +175,66 @@ namespace Application
 27(0,0,1) 90(0,1,1)
 26(1,0,1) 55(1,1,1)
 */
-
-            //return arr;
+            Random rnd = new Random();
+            int n = arr1.GetLength(0);
+            int count = 0;
+            double prev = 9; // двузначных чисел
+            for (int i = 0; i < n; i++)
+            {
+                for (int j = 0; j < arr1.GetLength(1); j++)
+                {
+                    for (int k = 0; k < arr1.GetLength(2); k++)
+                    {
+                        arr1[i, j, k] = rnd.Next(1, 11) + prev;
+                        prev = arr1[i, j, k];
+                        System
+                            .Console
+                            .Write($"{arr1[i, j, k]}({i}, {j}, {k}) ");
+                    }
+                }
+            }
+            System.Console.WriteLine();
         }
 
-        static double[,] Main62(double[,] arr)
+        static public int[,] Spiral(int n) {
+    int[,] result = new int[n, n];
+
+    int pos = 0;
+    int count = n;
+    int value = -n;
+    int sum = -1;
+
+    do {
+        value = -1 * value / n;
+        for (int i = 0; i < count; i++) {
+            sum += value;
+            result[sum / n, sum % n] = pos++;
+        }
+        value *= n;
+        count--;
+        for (int i = 0; i < count; i++) {
+            sum += value;
+            result[sum / n, sum % n] = pos++;
+        }
+    } while (count > 0);
+
+    return result;
+}
+
+
+// Method to print arrays, pads numbers so they line up in columns
+public static void PrintArray(int[,] array) {
+    int n = (array.GetLength(0) * array.GetLength(1) - 1).ToString().Length + 1;
+
+    for (int i = 0; i < array.GetLength(0); i++) {
+        for (int j = 0; j < array.GetLength(1); j++) {
+            Console.Write(array[i, j].ToString().PadLeft(n, ' '));
+        }
+        Console.WriteLine();
+    }
+}
+
+        static int[,] Main62(int n)
         {
             /*
 Задача 62. Напишите программу, которая заполнит спирально массив 4 на 4.
@@ -202,7 +244,11 @@ namespace Application
 11 16 15 06
 10 09 08 07
 */
-            int n = arr.GetLength(0);
+
+            //int n = arr.GetLength(0);
+            int x = 0;
+            int y = 0; // logo
+            double sum = 0;
             int count = 0;
             double[,] arr2 = new double[n, n];
             for (int i = 0; i < n; i++)
@@ -212,8 +258,10 @@ namespace Application
                     arr2[i, j] = 0;
                 }
             }
+            
 
-            return arr;
+
+            return Spiral(n);
         }
 
         static double[,] Main53(double[,] arr)
@@ -382,7 +430,6 @@ PrintArray(GetDictionary(array));
 
         static double[,] CreateArray2(int m, int n)
         {
-
             double[,] array = new double[m, n];
 
             Random random = new Random();
@@ -415,7 +462,7 @@ PrintArray(GetDictionary(array));
             return array;
         }
 
-        static void PrintArray(int[,] array)
+        static void PrintArray2(int[,] array)
         {
             for (int i = 0; i < array.GetLength(0); i++)
             {
@@ -566,9 +613,14 @@ PrintArray(newArray);
             int[,] arr1 = new int[5, 5];
             System.Console.WriteLine("The array 57:");
             Main57 (arr1);
-            System.Console.WriteLine("Array 62:");
-            PrintArray(Main62(CreateArray2(5-1, 5-1)));
+            System.Console.WriteLine("The matrix multiplication 58:");
+            PrintArray(Main58(CreateArray2(5, 5), CreateArray2(5, 5)));
+            System.Console.WriteLine("The 3D array 60: ");
+            Main60();
+            System.Console.WriteLine("Array Spiral 62:");
+            PrintArray(Main62(5 - 1));
             System.Console.WriteLine("Array 61:");
+            //PrintArray(Main61(CreateArray2(5-1, 5-1)));
         }
     }
 
