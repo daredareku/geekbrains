@@ -6,27 +6,6 @@ namespace Application
     public class Numbers
     {
         static bool debug = false;
-
-        static double[] SortArray1(double[] arr)
-        {
-            return arr;
-        }
-
-        static double[] SortArray2(double[] arr)
-        {
-            return arr;
-        }
-
-        static double[] AddRowToArray(double[] arr)
-        {
-            return arr;
-        }
-
-        static double[] CopyString(double[] arr)
-        {
-            return arr;
-        }
-
         static void PrintArray(double[,] array)
         {
             for (int i = 0; i < array.GetLength(0); i++)
@@ -37,19 +16,6 @@ namespace Application
                 }
                 Console.WriteLine();
             }
-            //return arr;
-        }
-
-        static int[,] CreateArray(int m, int n)
-        {
-            int[,] a = new int[m, n];
-            for (int i = 0; i < m; i++)
-            {
-                for (int j = 0; j < n; j++)
-                {
-                }
-            }
-            return a;
         }
 
         static void AddRowToArray(
@@ -160,13 +126,13 @@ namespace Application
                     arr3[i, j] = sum;
                 }
             }
-
             return arr3;
         }
 
         static void Main60()
         {
             double[,,] arr1 = new double[2, 2, 2];
+
             /*    
 Задача 60. ...Сформируйте трёхмерный массив из неповторяющихся двузначных чисел. Напишите программу, которая будет построчно выводить массив, добавляя индексы каждого элемента.
 Массив размером 2 x 2 x 2
@@ -196,43 +162,54 @@ namespace Application
             System.Console.WriteLine();
         }
 
-        static public int[,] Spiral(int n) {
-    int[,] result = new int[n, n];
+        public static int[,] Spiral(int n)
+        {
+            int[,] result = new int[n, n];
 
-    int pos = 0;
-    int count = n;
-    int value = -n;
-    int sum = -1;
+            int pos = 0;
+            int count = n;
+            int value = -n;
+            int sum = -1;
 
-    do {
-        value = -1 * value / n;
-        for (int i = 0; i < count; i++) {
-            sum += value;
-            result[sum / n, sum % n] = pos++;
+            do
+            {
+                value = -1 * value / n;
+                for (int i = 0; i < count; i++)
+                {
+                    sum += value;
+                    result[sum / n, sum % n] = pos++;
+                }
+                value *= n;
+                count--;
+                for (int i = 0; i < count; i++)
+                {
+                    sum += value;
+                    result[sum / n, sum % n] = pos++;
+                }
+            }
+            while (count > 0);
+
+            return result;
         }
-        value *= n;
-        count--;
-        for (int i = 0; i < count; i++) {
-            sum += value;
-            result[sum / n, sum % n] = pos++;
+
+        // Method to print arrays, pads numbers so they line up in columns
+        public static void PrintArray(int[,] array)
+        {
+            int n =
+                (array.GetLength(0) * array.GetLength(1) - 1)
+                    .ToString()
+                    .Length +
+                1;
+
+            for (int i = 0; i < array.GetLength(0); i++)
+            {
+                for (int j = 0; j < array.GetLength(1); j++)
+                {
+                    Console.Write(array[i, j].ToString().PadLeft(n, ' '));
+                }
+                Console.WriteLine();
+            }
         }
-    } while (count > 0);
-
-    return result;
-}
-
-
-// Method to print arrays, pads numbers so they line up in columns
-public static void PrintArray(int[,] array) {
-    int n = (array.GetLength(0) * array.GetLength(1) - 1).ToString().Length + 1;
-
-    for (int i = 0; i < array.GetLength(0); i++) {
-        for (int j = 0; j < array.GetLength(1); j++) {
-            Console.Write(array[i, j].ToString().PadLeft(n, ' '));
-        }
-        Console.WriteLine();
-    }
-}
 
         static int[,] Main62(int n)
         {
@@ -243,24 +220,8 @@ public static void PrintArray(int[,] array) {
 12 13 14 05
 11 16 15 06
 10 09 08 07
+*
 */
-
-            //int n = arr.GetLength(0);
-            int x = 0;
-            int y = 0; // logo
-            double sum = 0;
-            int count = 0;
-            double[,] arr2 = new double[n, n];
-            for (int i = 0; i < n; i++)
-            {
-                for (int j = 0; j < n; j++)
-                {
-                    arr2[i, j] = 0;
-                }
-            }
-            
-
-
             return Spiral(n);
         }
 
@@ -311,7 +272,6 @@ public static void PrintArray(int[,] array) {
 
                 AddRowToArray (array, newArray, column, i);
             }
-
             return newArray;
         }
 
@@ -323,7 +283,6 @@ public static void PrintArray(int[,] array) {
             {
                 coulumn[i] = array[columnNumber, i];
             }
-
             return coulumn;
         }
 
@@ -357,7 +316,6 @@ public static void PrintArray(int[,] array) {
                     uniqueValues.Add(array[i]);
                 }
             }
-
             return uniqueValues.ToArray();
         }
 
@@ -370,7 +328,6 @@ public static void PrintArray(int[,] array) {
                     return i;
                 }
             }
-
             return -1;
         }
 
@@ -408,13 +365,14 @@ public static void PrintArray(int[,] array) {
             Console.WriteLine();
         }
 
-        /*
-int[] array = CreateArray(10);
-PrintOneDimensionArray(array);
+        static void FreqPrint()
+        {
+            int[] array = CreateArray(10);
+            PrintOneDimensionArray (array);
 
-PrintArray(GetDictionary(array));
+            PrintArray(GetDictionary(array));
+        }
 
-*/
         static void AddRowToArray(
             int[,] originArray,
             int[,] copiedArray,
@@ -499,7 +457,6 @@ PrintArray(GetDictionary(array));
             {
                 for (int j = 0; j < arr.GetLength(1); j++)
                 {
-                    //arr[i, j] = array[i, j];
                     el = arr[k, j];
                     for (int i = 0; i < arr.GetLength(0); i++)
                     {
@@ -515,8 +472,6 @@ PrintArray(GetDictionary(array));
                 }
             }
 
-            //int el=arr[0, 0];
-            //int count = 1;
             for (int i = 0; i < arr.GetLength(0); i++)
             {
                 for (int j = 0; j < arr.GetLength(1); j++)
@@ -528,43 +483,13 @@ PrintArray(GetDictionary(array));
                 }
             }
 
-            //System.Console.WriteLine (count);
             //Array.Sort (arr); //sort the array only one dimensional
             //System.Sort(arr, Int32, Int32)
-            /*;
-            for (int i = 0; i < length; i++)
-            {
-                for (int j = 0; j < length; j++)
-                {
-                }
-            }
-            */
-            PrintArray (arr);
-
-            /* PrintArray(array);
-
-            Console.WriteLine();
-
-            int[,] newArray = UpdateArray(array);
-
-            PrintArray(newArray);
-
-            Console.ReadKey();
-            */
+            //PrintArray (arr);
         }
 
-        /*
-int[,] array = CreateArray(5, 5);
-PrintArray(array);
-
-Console.WriteLine();
-
-int[,] newArray = UpdateArray(array);
-PrintArray(newArray);
-*/
         static int[,] Main59(int[,] arr)
         {
-            //static
             int[,] array = CreateArray1(5, 5);
             int
                 min = 0,
@@ -576,7 +501,6 @@ PrintArray(newArray);
             {
                 for (int j = 0; j < arr.GetLength(1); j++)
                 {
-                    //arr[i, j] = array[i, j];
                     min = arr[i, j];
                     for (int k = 0; k < arr.GetLength(0); k++)
                     {
@@ -622,65 +546,5 @@ PrintArray(newArray);
             System.Console.WriteLine("Array 61:");
             //PrintArray(Main61(CreateArray2(5-1, 5-1)));
         }
-    }
-
-    class Program
-    {
-        static void MainTV(string[] args)
-        {
-        }
-
-        static void MainKV(string[] args)
-        {
-            // KV - К Встреча
-            double[,] arr = new double[3, 3];
-            arr[0, 0] = 1;
-            arr[0, 1] = 2;
-            arr[0, 2] = 3;
-            arr[1, 0] = 4;
-            arr[1, 1] = 5;
-            arr[1, 2] = 6;
-            arr[2, 0] = 7;
-            arr[2, 1] = 8;
-            arr[2, 2] = 9;
-
-            double[,] arr2 = new double[3, 3];
-            arr2[0, 0] = 1;
-            arr2[0, 1] = 2;
-            arr2[0, 2] = 3;
-            arr2[1, 0] = 4;
-            arr2[1, 1] = 5;
-            arr2[1, 2] = 6;
-            arr2[2, 0] = 7;
-            arr2[2, 1] = 8;
-            arr2[2, 2] = 9;
-
-            double[,] arr3 = new double[3, 3];
-            arr3[0, 0] = 1;
-            arr3[0, 1] = 2;
-            arr3[0, 2] = 3;
-            arr3[1, 0] = 4;
-            arr3[1, 1] = 5;
-            arr3[1, 2] = 6;
-            arr3[2, 0] = 7;
-            arr3[2, 1] = 8;
-            arr3[2, 2] = 9;
-
-            double[,] arr4 = new double[3, 3];
-            arr4[0, 0] = 1;
-            arr4[0, 1] = 2;
-            arr4[0, 2] = 3;
-            arr4[1, 0] = 4;
-            arr4[1, 1] = 5;
-            arr4[1, 2] = 6;
-            arr4[2, 0] = 7;
-            //arr4[2, 1] =
-        }
-        /*
-        static void Main(string[] args)
-        {
-
-        }
-        */
     }
 }
