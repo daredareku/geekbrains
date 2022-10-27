@@ -6,13 +6,41 @@ namespace Application
 
     public class Program
     {
+        abstract public class Base
+        {
+            public abstract void Print();
+        }
+
+        class Derived : Base
+        {
+            public override void Print()
+            {
+                Console.WriteLine("Derived");
+            }
+        }
+
+        abstract public class KV : Base
+        {
+            
+            public override void Print()
+            {
+                Console.WriteLine("KV ");
+            }
+
+            // public abstract void Print(); // override is not required
+
+        }
+
+
+
+
         static void MainTV(string[] args)
         {
         }
 
         static void MainKV(string[] args)
         {
-            // KV - К Встреча
+            // KV - Рљ Р’СЃС‚СЂРµС‡Р° KV - пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
             double[,] arr = new double[3, 3];
             arr[0, 0] = 1;
             arr[0, 1] = 2;
@@ -56,12 +84,13 @@ namespace Application
             arr4[2, 0] = 7;
             //arr4[2, 1] =
         }
-        /*
+ 
         static void Main(string[] args)
         {
+            System.Console.WriteLine("Hello World 2022!");
 
         }
-        */
+ 
     }
 
 }
