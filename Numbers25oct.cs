@@ -6,6 +6,7 @@ namespace Application
     public class Numbers
     {
         static bool debug = false;
+
         static void PrintArray(double[,] array)
         {
             for (int i = 0; i < array.GetLength(0); i++)
@@ -15,6 +16,14 @@ namespace Application
                     Console.Write(array[i, j] + " ");
                 }
                 Console.WriteLine();
+            }
+        }
+
+        static void PrintString(double[] array)
+        {
+            for (int i = 0; i < array.GetLength(0); i++)
+            {
+                Console.Write(array[i] + " ");
             }
         }
 
@@ -52,16 +61,22 @@ namespace Application
 8 4 4 2
 */
         {
-            double[] arr1 = new double[arr.GetLength(0)];
-            for (int i = 0; i < arr.GetLength(0); i++)
+            for (int i = 0; i < arr.GetLength(1); i++)
             {
-                //double[] arr2=CopyString(arr[i]);
-                for (int j = 0; j < arr.GetLength(1); j++)
+                double[] arr1 = CopyRow(arr, i);
+                double[] arr2 = CopyColumn(arr, i);
+                Array.Sort(arr1, (x, y) => y.CompareTo(x));
+                PrintString (arr1);
+                System.Console.WriteLine();
+                Array.Sort(arr2, (x, y) => y.CompareTo(x));
+                for (int j = 0; j < arr2.GetLength(0); j++)
                 {
-                    //SortArray(arr[i, j]); //, i); //,[i, 0]);
+                    arr[j, i] = arr2[j]; // копирование column
                 }
             }
-
+            System
+                .Console
+                .WriteLine("Done, Array.Sort() finished. Now Columns Sort: ");
             return arr;
         }
 
@@ -84,18 +99,43 @@ namespace Application
 */
             int n = arr.GetLength(0);
             int count = 0;
-            double[] arr2 = new double[n];
+            int countmax = 0;
+            double min = 1.2e11;
+            double max = 0;
+            double prev = 0;
+            double sum = 0;
+
             double[] arr1 = new double[arr.GetLength(0)];
             for (int i = 0; i < arr.GetLength(0); i++)
             {
-                //double[] arr2=CopyString(arr[i]);
+                sum = 0;
                 for (int j = 0; j < arr.GetLength(1); j++)
                 {
-                    arr1[i] += arr[i, j];
+                    sum += arr[i, j];
+                    arr1[i] = sum;
+                }
+                if (max < sum)
+                {
+                    max = sum; 
+                    countmax = i;
+                }
+                if (sum < min)
+                {
+                    min = sum;
+                    count = i;
                 }
             }
+            System
+                .Console
+                .WriteLine("max = " +
+                max +
+                " min = " +
+                min +
+                " count = " +
+                count);
 
             System.Console.WriteLine("min Line number: ");
+            System.Console.WriteLine (min);
             return count;
         }
 
@@ -166,7 +206,7 @@ namespace Application
         {
             int[,] result = new int[n, n];
 
-            int pos = 0;
+            int pos = 1;
             int count = n;
             int value = -n;
             int sum = -1;
@@ -225,6 +265,28 @@ namespace Application
             return Spiral(n);
         }
 
+        static int[,] PasTriangle(int n)
+        {
+            int[][] result = new int[n][];
+            int[,] array = new int[n, n];
+            result[0] = new int[] { 1 };
+            array[0, 0] = 1;
+            for (int i = 1; i < n; i++)
+            {
+                result[i] = new int[i + 1];
+                int left = 0;
+                for (int j = 0; j < i; j++)
+                {
+                    result[i][j] = result[i - 1][j] + left;
+                    left = result[i - 1][j];
+                    array[i, j] = result[i][j];
+                }
+                result[i][i] = left;
+                array[i, i] = result[i][i];
+            }
+            return array;
+        }
+
         static double[,] Main53(double[,] arr)
         {
             /* которая поменяет местами первую и последнюю строки двумерного массива.
@@ -273,6 +335,40 @@ namespace Application
                 AddRowToArray (array, newArray, column, i);
             }
             return newArray;
+        }
+
+        static double[] CopyColumn(double[,] array, int columnNumber)
+        {
+            double[] coulumn = new double[array.GetLength(0)];
+
+            for (int i = 0; i < coulumn.Length; i++)
+            {
+                coulumn[i] = array[columnNumber, i];
+            }
+            return coulumn;
+        }
+
+        static double[] CopyRow(double[,] array, int columnNumber)
+        {
+            double[] coulumn = new double[array.GetLength(0)];
+
+            for (int i = 0; i < coulumn.Length; i++)
+            {
+                coulumn[i] = array[i, columnNumber];
+            }
+            return coulumn;
+        }
+
+        static double[,]
+        CopyColumnTo(double[] array, int columnNumber, int nrows)
+        {
+            double[,] macoulumn = new double[array.GetLength(0), nrows];
+
+            for (int i = 0; i < macoulumn.GetLength(1); i++)
+            {
+                macoulumn[i, columnNumber] = array[i];
+            }
+            return macoulumn;
         }
 
         static int[] CopyColumn(int[,] array, int columnNumber)
@@ -369,7 +465,6 @@ namespace Application
         {
             int[] array = CreateArray(10);
             PrintOneDimensionArray (array);
-
             PrintArray(GetDictionary(array));
         }
 
@@ -399,7 +494,6 @@ namespace Application
                     array[i, j] = random.Next(1, 20);
                 }
             }
-
             return array;
         }
 
@@ -427,6 +521,18 @@ namespace Application
                 for (int j = 0; j < array.GetLength(1); j++)
                 {
                     Console.Write(array[i, j] + " ");
+                }
+                Console.WriteLine();
+            }
+        }
+
+        static void PrintArray2(int[][] array)
+        {
+            for (int i = 0; i < array.GetLength(0); i++)
+            {
+                for (int j = 0; j < array.GetLength(1); j++)
+                {
+                    Console.Write(array[i][j] + " ");
                 }
                 Console.WriteLine();
             }
@@ -482,10 +588,6 @@ namespace Application
                     }
                 }
             }
-
-            //Array.Sort (arr); //sort the array only one dimensional
-            //System.Sort(arr, Int32, Int32)
-            //PrintArray (arr);
         }
 
         static int[,] Main59(int[,] arr)
@@ -535,16 +637,27 @@ namespace Application
         {
             double[,] arr = new double[5, 5];
             int[,] arr1 = new int[5, 5];
-            System.Console.WriteLine("The array 57:");
-            Main57 (arr1);
+            arr = CreateArray2(5, 5);
+            PrintArray (arr);
+            System.Console.WriteLine("Array 54: ");
+            PrintArray(Main54SortLine(arr));
+            System.Console.WriteLine("Array 56: ");
+            arr = CreateArray2(5, 5);
+            PrintArray (arr);
+            System.Console.WriteLine(Main56(arr));
+            if (debug)
+            {
+                System.Console.WriteLine("The array 57:");
+                Main57 (arr1);
+            }
             System.Console.WriteLine("The matrix multiplication 58:");
             PrintArray(Main58(CreateArray2(5, 5), CreateArray2(5, 5)));
             System.Console.WriteLine("The 3D array 60: ");
             Main60();
             System.Console.WriteLine("Array Spiral 62:");
             PrintArray(Main62(5 - 1));
-            System.Console.WriteLine("Array 61:");
-            //PrintArray(Main61(CreateArray2(5-1, 5-1)));
+            Console.WriteLine("Array Pas Triangle: ");
+            PrintArray2(PasTriangle(5));
         }
     }
 }
