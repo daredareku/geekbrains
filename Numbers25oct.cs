@@ -633,8 +633,69 @@ namespace Application
             return newArray;
         }
 
+        static string GetNatural63(int i, string result=null)
+        {
+            if (i == 1)
+                        {
+                            return "1 ";
+                        }
+                        else
+                        {
+                            if (result != null){ result += i.ToString()+" "; //System.Console.WriteLine(result);
+                            }
+                            else result = i.ToString()+" ";
+                            if(result.Length < i*15) return GetNatural63(i-1, result);
+                                //result += GetNatural63(i-1, result);
+                            //System.Console.WriteLine(result);
+                            //System.Console.WriteLine("end");
+                            return (result);
+                        }
+        }
+
+        static int  GetSumNumbers67(int i){// берет число и возвращать сумму его цифр.
+            if (i/10 == 0)// i < 10
+                {
+                    return i;
+                }else {
+                    return (i%10 + GetSumNumbers67(i/10));
+                }
+        }
+
+        static int  GetSumNumbers(int i, int j){// берет числа А и Б и возвращать целую степень его цифр.
+            if (j == 1)
+                {
+                    return i;
+                }else {
+                    return (i* GetSumNumbers(i, j-1));
+                }
+        }
+
+        static int factorial(int i){//
+        if (i == 1)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return (i*factorial(i-1));
+                }
+        }
+
         static void Main(string[] args)
         {
+            System.Console.WriteLine(//int[,] array = CreateArray1(3, 3);
+                //PrintArray2(array);
+                //Main57(array);
+                //PrintArray2(Main59(array));
+                //GetNatural63(5);
+                //GetSumNumbers67(123);
+                //GetSumNumbers(2, 3);
+                factorial(5)
+            );
+            System.Console.WriteLine(GetSumNumbers(2, 3));
+            System.Console.WriteLine(GetSumNumbers67(123));
+            Console.WriteLine(GetNatural63(50));
+            Console.ReadKey();
             double[,] arr = new double[5, 5];
             int[,] arr1 = new int[5, 5];
             arr = CreateArray2(5, 5);
