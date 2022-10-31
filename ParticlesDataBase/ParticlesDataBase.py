@@ -80,13 +80,29 @@ class ParticlesDataBase():
         conn.commit()
 
     def get_particles_data(self):
-
+        cur.execute("""SELECT * FROM particles(" INNER JOIN particles ON particles.id = particles.particles.id""");
+            insertParticles""") # """CREATE_BUSES""")
         return self._particles_data
+        
+    def get_roliks_data(self):
+        cur.execute("""SELECT * FROM roliks(" INNER JOIN roliks ON roliks.id = roliks.roliks.id""");
+            insertRoliks""") # """CREATE_BUSES""")
+
+    def get_disks_data(self):
+        cur.execute("""SELECT * FROM disks(" INNER JOIN disks ON disks.id = disks.disks.id""");
+            insertDisks""") # """CREATE_BUSES""")
+        return self._disks_data
+
+    def get_roliks_data_right(self):
+        cur.execute("""SELECT * FROM roliks(" RIGHT JOIN roliks ON roliks.id = roliks.roliks.id""");
+            insertRoliks""") # """CREATE_BUSES""")
 
     def set_particles_data(self, particles_data):
         self._particles_data = particles_data
 
     def get_particles_fermions(self):
+        cur.execute("""SELECT * FROM particles(" INNER JOIN particles ON particles.id = particles.particles.id""");
+            insertParticles""") # """CREATE_BUSES""")
         return self._particles_fermions
 
     def set_particles_fermions(self, particles_fermions):
