@@ -80,6 +80,7 @@ class ParticlesDataBase():
         conn.commit()
 
     def get_particles_data(self):
+
         return self._particles_data
 
     def set_particles_data(self, particles_data):
