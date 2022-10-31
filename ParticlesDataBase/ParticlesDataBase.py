@@ -1,5 +1,20 @@
 #//
-#//
+#// Чему будет равна выборка:
+#
+# SELECT ФИО, Д/р, Адрес FROM Общий список
+# SELECT ФИО, Статус FROM Общий список WHERE Адрес = «Можга»
+# SELECT ФИО FROM Общий список WHERE Адрес = «Москва» AND Группа = «Работа»
+# SELECT Д/р FROM Общий список WHERE Адрес = «Москва» OR Группа = «Работа»
+# Что будет результатом следующих JOIN’ов:
+#
+# INNER JOIN Люди, Адреса ON id = Чей адрес
+# LEFT JOIN Люди, Адреса ON id = Чей адрес
+# RIGHT JOIN Люди, Адреса ON id = Чей адрес
+# FULL JOIN Люди, Адреса ON id = Чей адрес
+# Дополнительное задание. Что будет результатом выборки:
+#
+# SELECT ФИО, Адрес, Комментарий FROM Люди RIGHT JOIN Адреса ON id = Чей
+# Адрес
 #//
 #//
 #//
@@ -80,31 +95,41 @@ class ParticlesDataBase():
         conn.commit()
 
     def get_particles_data(self):
-        cur.execute("""SELECT * FROM particles(" INNER JOIN particles ON particles.id = particles.particles.id""");
-            insertParticles""") # """CREATE_BUSES""")
+        cur.execute("""SELECT * FROM particles(" INNER JOIN particles ON particles.id = particles.particles.id);
+        insertParticles""")
+        # """CREATE_BUSES""")
         return self._particles_data
         
     def get_roliks_data(self):
-        cur.execute("""SELECT * FROM roliks(" INNER JOIN roliks ON roliks.id = roliks.roliks.id""");
+        cur.execute("""SELECT * FROM roliks(" INNER JOIN roliks ON roliks.id = roliks.roliks.id);
             insertRoliks""") # """CREATE_BUSES""")
 
     def get_disks_data(self):
-        cur.execute("""SELECT * FROM disks(" INNER JOIN disks ON disks.id = disks.disks.id""");
+        cur.execute("""SELECT * FROM disks(" INNER JOIN disks ON disks.id = disks.disks.id);
             insertDisks""") # """CREATE_BUSES""")
         return self._disks_data
 
     def get_roliks_data_right(self):
-        cur.execute("""SELECT * FROM roliks(" RIGHT JOIN roliks ON roliks.id = roliks.roliks.id""");
+        cur.execute("""SELECT * FROM roliks(" RIGHT JOIN roliks ON roliks.id = roliks.roliks.id);
             insertRoliks""") # """CREATE_BUSES""")
 
     def set_particles_data(self, particles_data):
         self._particles_data = particles_data
 
     def get_particles_fermions(self):
-        cur.execute("""SELECT * FROM particles(" INNER JOIN particles ON particles.id = particles.particles.id""");
+        cur.execute("""SELECT * FROM particles(" INNER JOIN particles ON particles.id = particles.particles.id);
             insertParticles""") # """CREATE_BUSES""")
         return self._particles_fermions
 
     def set_particles_fermions(self, particles_fermions):
+        #
         self._particles_fermions = particles_fermions
+        
+    def set_disks_data(self, disks_data):
+        self._disks_data = disks_data
+        
+    def set_roliks_data(self, roliks_data):
+        self._roliks_data = roliks_data
+        
+                    
 
