@@ -19,7 +19,10 @@
 #//
 #//
 import sqlite3
-
+from foobardb import FoobarDB
+# >>> mydb = FoobarDB("./mydb.db")
+# >>> mydb.set("name" , "Palash") #Sets Value
+# >>> mydb.get("name")
 #self= new (ParticlesDataBase.__init__(None) )
 
 class ParticlesDataBase():
