@@ -12,10 +12,9 @@ def Task1():
     print("1. Введите номер дня недели")
     den=int(math.fabs(float(input("Введите день недели: "))))
     if den==7 or den==6:
-        #den=den%7
-        print("День выходной")
+        print("Да. День выходной")
     elif den==1 or den==2 or den==3 or den==4 or den==5:
-        print("День рабочий")    
+        print("Нет. День рабочий")    
     pass
 # Напишите программу для. проверки истинности утверждения ¬(X ⋁ Y ⋁ Z) = ¬X ⋀ ¬Y ⋀ ¬Z для всех значений предикат.
 def Task2():
