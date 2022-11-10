@@ -1,5 +1,6 @@
 #
 from numpy import append
+import random
 # Урок 2. Знакомство с Python. Продолжение
 # 1. Напишите программу, которая принимает на вход вещественное число и показывает сумму его цифр.
 #
@@ -74,24 +75,49 @@ def SumList():
     b=0
     s=[]
     for i in range(1,a+1):
-        b=b
+        #b=b
         s+=[(1+1/i)**i]
         #print(b)
     print(s)
+    for i in range(0, len(s)):
+        b=b+s[i]
+    print(b)
 # 4. Задайте список из N элементов, заполненных числами из промежутка [-N, N]. Найдите произведение элементов на указанных позициях. Позиции хранятся в файле 
 # file.txt - в одной строке одно число.
-# Реализуйте алгоритм перемешивания списка.
+
 def List():
     a=int(input("4. Введите число: "))
     b=[]
     b=[i for i in range(-a, a+1)]
     #   b.append(i)
     f=open(".//file.txt", "w")
-    for i in range(0, len(b)):
-        f.write(str(i)+"\n")
+    #for i in range(0, len(b)):
+    #    f.write(str(i)+"\n")
     #f.write(" ".join(int(b)))
+    xy=[]
+    xy[0]=[random.randint(-a, a+1)]
+    xy[1]=[random.randint(-a, a+1)]
+    for i in range(0, len(xy)):
+        f.write(str(xy[i])+"\n")
     
+    f.close()
+    with open(".//file.txt", "r") as f:
+        my=f.read().split("\n")
+    myy=f.read()
+    z=b[myx]*b[myy]
+    print(z)
+# # 18. Реализуйте алгоритм перемешивания списка. Перемешивание должно происходить в случайном порядке.
+#def main18():    
+    for i in range(0, len(b)):
+        #print(b[i])
+        h=random.randint(0, len(b)-1)
+        k=b[i]
+        b[i]=b[h]
+        b[h]=k
     print(b)
+    f.closed()
+        
+        
     
 # На easy
 # На вход программе подаются два целых числа aa и bb. Напишите программу, которая выводит:
