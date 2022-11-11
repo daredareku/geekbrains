@@ -115,7 +115,7 @@ def List():
         b[i]=b[h]
         b[h]=k
     print(b)
-    f.closed()
+    f.close()
         
         
     
@@ -216,6 +216,6 @@ def Main():
     
 #Zodiac()    
 #SumCyfr()
-Proizv1()
-SumList()
-List()    
+Proizv1(4)
+SumList(6)
+List(7)    
