@@ -95,16 +95,16 @@ def List():
     #    f.write(str(i)+"\n")
     #f.write(" ".join(int(b)))
     xy=[]
-    xy[0]=[random.randint(-a, a+1)]
-    xy[1]=[random.randint(-a, a+1)]
+    xy.append(random.randint(-a, a+1))
+    xy.append(random.randint(-a, a+1))
     for i in range(0, len(xy)):
         f.write(str(xy[i])+"\n")
     
     f.close()
     with open(".//file.txt", "r") as f:
         my=f.read().split("\n")
-    myy=f.read()
-    z=b[myx]*b[myy]
+    #myy=f.read()
+    z=b[int(my[0])]*b[int(my[1])]
     print(z)
 # # 18. Реализуйте алгоритм перемешивания списка. Перемешивание должно происходить в случайном порядке.
 #def main18():    
