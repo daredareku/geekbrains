@@ -22,14 +22,14 @@ def rand(seed):
     return int(seed*t.microsecond%1000)
     #i=e**((seed%20)+(t%5))
 
-print(rand(5))
+#print(rand(5))
 
 # Урок 3. Данные, функции и модули в Python
 # 1. Задайте список из нескольких чисел. Напишите программу, которая найдёт сумму элементов списка, стоящих на нечётной позиции.
-def sum_odd(list):
+def sum_odd(listm):
     sum=0
-    for i in range(1,len(list),2):
-        sum+=list[i]
+    for i in range(1,len(listm),2):
+        sum+=listm[i]
     return sum
 # Пример:
 
@@ -42,6 +42,7 @@ def sum_odd(list):
 # - [2, 3, 5, 6] => [12, 15]
 def mult_pairs(list):
     mult=[]
+    print('fibo='+str(list))
     for i in range(len(list)//2):
         mult.append(list[i]*list[-i-1])
     return mult
@@ -54,10 +55,12 @@ def mult3(list):
     max=0
     min=1
     for i in list:
-        if i%1>max:
-            max=i%1
-        if i%1<min:
-            min=i%1
+        #print(list[i]-list[i].int())
+        l=(i-int(i))
+        if l>max:
+            max=l #i-i%1
+        if l<min:
+            min=l #i-i%1
     return max-min
 # 4. Напишите программу, которая будет преобразовывать десятичное число в двоичное.
 
@@ -67,14 +70,22 @@ def mult3(list):
 # - 3 -> 11
 # - 2 -> 10
 def mult4(list):
-    max=0
-    min=1
-    for i in list:
-        if i%1>max:
-            max=i%1
-        if i%1<min:
-            min=i%1
-    return max-min
+    # max=0
+    # min=1
+    # for i in list:
+    #     if i%1>max:
+    #         max=i%1
+    #     if i%1<min:
+    #         min=i%1
+    # return max-min
+    res=""
+    while (list)>0: #1:
+        #print(list.pop())
+        o=list%2
+        res=str(o)+res
+        list=list//2
+    return res
+        
 # 5. Задайте число. Составьте список чисел Фибоначчи, в том числе для отрицательных индексов.
 
 # Пример:
@@ -86,10 +97,11 @@ def fibo5(k):
     fibo=[0,1]
     for i in range(2,k+1):
         fibo.append(fibo[i-1]+fibo[i-2])
+        #fibo[-i]=(-fibo[i-1]-fibo[i-2]) # .append(-fibo[i-1]-fibo[i-2])
     return fibo
 
 print(sum_odd(fibo5(8)))
 print(mult_pairs(fibo5(8)))
-print(mult3(fibo5(8)))
-print(mult4(fibo5(8)))
+print(mult3([1.1, 1.2, 3.1, 5, 10.01])) #fibo5(8)))
+print(mult4(45)) #fibo5(8)))
 print(fibo5(8))
