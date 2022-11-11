@@ -1,4 +1,5 @@
 #
+debug = True
 from numpy import append
 import random
 # Урок 2. Знакомство с Python. Продолжение
@@ -9,8 +10,9 @@ import random
 # - 6782 -> 23
 # - 0,56 -> 11
     
-def SumCyfr():
-    b=float(input("1. Введите число: "))
+def SumCyfr(b):
+    if not b:
+        b=float(input("1. Введите число: "))
     s=[]
     # while a>1:
     #     b=a%10
@@ -39,8 +41,9 @@ def SumCyfr():
 # Пример:
 #
 # - пусть N = 4, тогда  (1, 1*2, 1*2*3, 1*2*3*4) --> [ 1, 2, 6, 24 ]
-def Proizv1():
-    a=int(input("2. Введите число: "))
+def Proizv1(a):
+    if not a:
+        a=int(input("2. Введите число: "))
     s=[]
     su=[]
     for i in range(1, a+1):
@@ -70,8 +73,9 @@ def Proizv():
 # Пример:
 #
 # - Для n = 6: {1: 4, 2: 7, 3: 10, 4: 13, 5: 16, 6: 19}
-def SumList():
-    a=int(input("3. Введите число: "))
+def SumList(a):
+    if not a:
+        a=int(input("3. Введите число: "))
     b=0
     s=[]
     for i in range(1,a+1):
@@ -85,8 +89,9 @@ def SumList():
 # 4. Задайте список из N элементов, заполненных числами из промежутка [-N, N]. Найдите произведение элементов на указанных позициях. Позиции хранятся в файле 
 # file.txt - в одной строке одно число.
 
-def List():
-    a=int(input("4. Введите число: "))
+def List(a):
+    if not a:
+        a=int(input("4. Введите число: "))
     b=[]
     b=[i for i in range(-a, a+1)]
     #   b.append(i)
@@ -103,9 +108,11 @@ def List():
     f.close()
     with open(".//file.txt", "r") as f:
         my=f.read().split("\n")
+        if debug:
+            print(my)
     #myy=f.read()
     z=b[int(my[0])]*b[int(my[1])]
-    print(z)
+    print('mul='+str(z))
 # # 18. Реализуйте алгоритм перемешивания списка. Перемешивание должно происходить в случайном порядке.
 #def main18():    
     for i in range(0, len(b)):
