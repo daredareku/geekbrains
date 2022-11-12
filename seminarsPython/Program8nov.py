@@ -1,4 +1,4 @@
-#
+# coding=UTF-8
 debug = True
 from numpy import append
 import random
@@ -10,17 +10,17 @@ import random
 # - 6782 -> 23
 # - 0,56 -> 11
     
+def sumNums(num):
+    sum = 0
+    for i in str(num):
+        if i != ".":
+            sum += int(i)
+    return sum
+    
 def SumCyfr(b):
     if not b:
         b=float(input("1. Введите число: "))
     s=[]
-    # while a>1:
-    #     b=a%10
-    #     #print(b)
-    #     s+=#append(int((a-a%10)%10))
-    #     #print(int((a-a%10)%10))
-    #     a=a/10
-    # #b=a%10
     while b>=1:
         s+=[int(b%10)]
         b=b/10
@@ -32,10 +32,9 @@ def SumCyfr(b):
     l=min(len(s),7)
     for i in range(0,l):
         sum=sum+int(s[i])
-    #print(s)
     print(sum)
-    
-    
+   
+   
 # 2. Напишите программу, которая принимает на вход число N и выдает набор список произведений чисел от 1 до N.
 #
 # Пример:
@@ -55,7 +54,7 @@ def Proizv1(a):
         print(sum)
         su+=[int(sum)]
     print('su=', su)
-    #print(su)
+
     
 
 def Proizv():
@@ -79,9 +78,7 @@ def SumList(a):
     b=0
     s=[]
     for i in range(1,a+1):
-        #b=b
         s+=[(1+1/i)**i]
-        #print(b)
     print(s)
     for i in range(0, len(s)):
         b=b+s[i]
@@ -90,39 +87,53 @@ def SumList(a):
 # file.txt - в одной строке одно число.
 
 def List(a):
-    if not a:
-        a=int(input("4. Введите число: "))
     b=[]
     b=[i for i in range(-a, a+1)]
-    #   b.append(i)
-    f=open(".//file.txt", "w")
-    #for i in range(0, len(b)):
-    #    f.write(str(i)+"\n")
-    #f.write(" ".join(int(b)))
-    xy=[]
-    xy.append(random.randint(-a, a+1))
-    xy.append(random.randint(-a, a+1))
-    for i in range(0, len(xy)):
-        f.write(str(xy[i])+"\n")
-    
-    f.close()
     with open(".//file.txt", "r") as f:
         my=f.read().split("\n")
         if debug:
             print(my)
-    #myy=f.read()
-    z=b[int(my[0])]*b[int(my[1])]
-    print('mul='+str(z))
+    z=1
+    for i in range(0, len(my)):
+        if my[i]:
+            z*=int(b[int(my[i])])
+    print(str(z))
+    # print(str(z))
 # # 18. Реализуйте алгоритм перемешивания списка. Перемешивание должно происходить в случайном порядке.
-#def main18():    
     for i in range(0, len(b)):
-        #print(b[i])
         h=random.randint(0, len(b)-1)
         k=b[i]
         b[i]=b[h]
         b[h]=k
     print(b)
     f.close()
+    
+    
+#     Перемешивание
+# Считайте элементы и сформируйте из него список. Реализуйте следующий алгоритм перемешивания списка: Необходимо пройтись по всем элемента от 0 до последнего один раз
+# и каждый четный элемент поменять местами с предыдущим, каждый нечетный со следующим, если такое возможно.
+def Mix():
+    b=[]
+    #b=[i for i in range(0, a)]
+    v=input()
+    while(v):
+        b+=[int(v)] #input())]
+        v=input()
+    print(b)
+    for i in range(0, len(b)):
+        if i%2==0: # and i!=0:
+            #if i!=len(b)-1:
+            k=b[i]
+            b[i]=b[i+1]
+            b[i+1]=k
+        else:
+            if b[i+1]: # and i!=0: #i!=0:
+                k=b[i]
+                b[i]=b[i-1]
+                b[i-1]=k
+    print(b)
+
+#Mix()
         
         
     
@@ -222,7 +233,9 @@ def Main():
         
     
 #Zodiac()    
-#SumCyfr()
+#SumCyfr(6782)
+Mix()
+print(sumNums(6782))
 Proizv1(4)
 SumList(6)
-List(7)    
+List(5)    

@@ -1,6 +1,4 @@
 #
-#import random
-#i=random.randint(0, 11)
 from datetime import datetime
 e=2.71828182845904523536028747135266249775724709369995
 # Класс datetime.date(year, month, day) - стандартная дата. Атрибуты: year, month, day. Неизменяемый объект.
@@ -17,12 +15,8 @@ def rand(seed):
     # Seed — это стартовое число, точка, с которой начинается последовательность псевдослучайных чисел.
     # Генератор псевдослучайных чисел использует единственное начальное значение, откуда и следует его псевдослучайность. 
     # Генератор истинных случайных чисел всегда имеет в начале высококачественную случайную величину, предоставленную различными источниками энтропии.
-    t=datetime.now()#.timestamp()
-    #t=datetime.current_time()
+    t=datetime.now()
     return int(seed*t.microsecond%1000)
-    #i=e**((seed%20)+(t%5))
-
-#print(rand(5))
 
 # Урок 3. Данные, функции и модули в Python
 # 1. Задайте список из нескольких чисел. Напишите программу, которая найдёт сумму элементов списка, стоящих на нечётной позиции.
@@ -55,12 +49,11 @@ def mult3(list):
     max=0
     min=1
     for i in list:
-        #print(list[i]-list[i].int())
         l=(i-int(i))
         if l>max:
-            max=l #i-i%1
+            max=l 
         if l<min:
-            min=l #i-i%1
+            min=l 
     return max-min
 # 4. Напишите программу, которая будет преобразовывать десятичное число в двоичное.
 
@@ -70,17 +63,8 @@ def mult3(list):
 # - 3 -> 11
 # - 2 -> 10
 def mult4(list):
-    # max=0
-    # min=1
-    # for i in list:
-    #     if i%1>max:
-    #         max=i%1
-    #     if i%1<min:
-    #         min=i%1
-    # return max-min
     res=""
     while (list)>0: #1:
-        #print(list.pop())
         o=list%2
         res=str(o)+res
         list=list//2
@@ -97,11 +81,13 @@ def fibo5(k):
     fibo=[0,1]
     for i in range(2,k+1):
         fibo.append(fibo[i-1]+fibo[i-2])
-        #fibo[-i]=(-fibo[i-1]-fibo[i-2]) # .append(-fibo[i-1]-fibo[i-2])
-    return fibo
+    fibom=[1, -1]
+    for i in range(2,k):
+        fibom.append(((-1)**i)*(abs(fibom[i-1])+abs(fibom[i-2])))
+    return fibom[::-1]+fibo
 
 print(sum_odd(fibo5(8)))
 print(mult_pairs(fibo5(8)))
 print(mult3([1.1, 1.2, 3.1, 5, 10.01])) #fibo5(8)))
-print(mult4(45)) #fibo5(8)))
+print(mult4(2)) #fibo5(8)))
 print(fibo5(8))
