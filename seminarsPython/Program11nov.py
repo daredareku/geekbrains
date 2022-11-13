@@ -35,7 +35,7 @@ def Factor(n):
     if n > 1:
         Ans.append(n)
     return Ans
-print(Factor(int(input())))
+#print(Factor(int(input())))
 
 def Simple2():
     d=float(input("2. Задайте натуральное: "))
@@ -130,4 +130,5 @@ def main():
         
 print(Precision1(1e-5))
 print(Factor(int(48)))
+print(NonRepeating(6))
 #main()
