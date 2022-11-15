@@ -48,9 +48,10 @@ def Simple2():
     
 # 3. Задайте последовательность чисел. Напишите программу, которая выведет список неповторяющихся элементов исходной последовательности.
 def NonRepeating(a):
-    b=sorted(a,key=lambda x: a.count(x))
-    for i in range(len(b)-1):
+    b=sorted(a,key=lambda x: a.count(x)) # sort
+    for i in range(len(b)): #-1):
         if b[i]==b[i+1]:
+            #b.remove(b[i]) # remove last element from list, both elements
             continue
         else:
             print(b[i])
