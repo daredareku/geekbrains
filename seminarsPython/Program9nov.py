@@ -56,9 +56,7 @@ def mult3(list):
             min=l 
     return max-min
 # 4. Напишите программу, которая будет преобразовывать десятичное число в двоичное.
-
 # Пример:
-
 # - 45 -> 101101
 # - 3 -> 11
 # - 2 -> 10
@@ -92,8 +90,8 @@ def fibo5(k):
         fibom.append(((-1)**i)*(abs(fibom[i-1])+abs(fibom[i-2])))
     return fibom[::-1]+fibo
 
-print(sum_odd(fibo51(8)))
-print(mult_pairs(fibo51(8)))
-print(mult3([1.1, 1.2, 3.1, 5, 10.01])) #fibo5(8)))
-print(mult4(2)) #fibo5(8)))
-print(fibo5(8))
+print('1. Нечетные='+str(sum_odd(fibo51(8))))
+print('2. Пары произведение='+str(mult_pairs(fibo51(8))))
+print('3. Difference='+str(mult3([1.1, 1.2, 3.1, 5, 10.01])))
+print('4. Двоичное представление='+str(mult4(45)))
+print('5. NegaFibo='+str(fibo5(8)))
