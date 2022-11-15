@@ -48,6 +48,13 @@ def Simple2():
     
 # 3. Задайте последовательность чисел. Напишите программу, которая выведет список неповторяющихся элементов исходной последовательности.
 def NonRepeating(a):
+    lst = list(map(int, input("Введите числа через пробел:\n").split()))
+    print(f"Исходный список: {lst}")
+    new_lst = []
+    [new_lst.append(i) for i in lst if i not in new_lst]
+    print(f"Список из неповторяющихся элементов: {new_lst}")
+
+def NonRepeating1():
     b=sorted(a,key=lambda x: a.count(x)) # sort
     for i in range(len(b)): #-1):
         if b[i]==b[i+1]:
@@ -129,7 +136,8 @@ def main():
             print("НОК: ", a*i)
             break
         
-print(Precision1(1e-5))
+print(round(Precision1(1e-5), 6))
+print("Список множителей")
 print(Factor(int(48)))
 print(NonRepeating(6))
 #main()

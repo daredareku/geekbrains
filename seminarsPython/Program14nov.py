@@ -292,7 +292,7 @@ def aRLE(t):
         print("Выход")
     else:
         print("Неверный ввод")
-        aRLE()
+        aRLE(t)
         
 def codingRLE(atxt):
     count = 1

@@ -77,6 +77,12 @@ def mult4(list):
 # - для k = 8 список будет выглядеть так: [-21 ,13, -8, 5, −3, 2, −1, 1, 0, 1, 1, 2, 3, 5, 8, 13, 21] 
 # [Негафибоначчи](https://ru.wikipedia.org/wiki/%D0%9D%D0%B5%D0%B3%D0%B0%D1%84%D0%B8%D0%B1%D0%BE%D0%BD%D0%B0%D1%87%D1%87%D0%B8#:~:text=%D0%92%20%D0%BC%D0%B0%D1%82%D0%B5%D0%BC%D0%B0%D1%82%D0%B8%D0%BA%D0%B5%2C%20%D1%87%D0%B8%D1%81%D0%BB%D0%B0%20%D0%BD%D0%B5%D0%B3%D0%B0%D1%84%D0%B8%D0%B1%D0%BE%D0%BD%D0%B0%D1%87%D1%87%D0%B8%20%E2%80%94%20%D0%BE%D1%82%D1%80%D0%B8%D1%86%D0%B0%D1%82%D0%B5%D0%BB%D1%8C%D0%BD%D0%BE%20%D0%B8%D0%BD%D0%B4%D0%B5%D0%BA%D1%81%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%BD%D1%8B%D0%B5%20%D1%8D%D0%BB%D0%B5%D0%BC%D0%B5%D0%BD%D1%82%D1%8B%20%D0%BF%D0%BE%D1%81%D0%BB%D0%B5%D0%B4%D0%BE%D0%B2%D0%B0%D1%82%D0%B5%D0%BB%D1%8C%D0%BD%D0%BE%D1%81%D1%82%D0%B8%20%D1%87%D0%B8%D1%81%D0%B5%D0%BB%20%D0%A4%D0%B8%D0%B1%D0%BE%D0%BD%D0%B0%D1%87%D1%87%D0%B8.)
 
+def fibo51(k):
+    fibo=[0,1]
+    for i in range(2,k+1):
+        fibo.append(fibo[i-1]+fibo[i-2])
+    return fibo
+
 def fibo5(k):
     fibo=[0,1]
     for i in range(2,k+1):
@@ -86,8 +92,8 @@ def fibo5(k):
         fibom.append(((-1)**i)*(abs(fibom[i-1])+abs(fibom[i-2])))
     return fibom[::-1]+fibo
 
-print(sum_odd(fibo5(8)))
-print(mult_pairs(fibo5(8)))
+print(sum_odd(fibo51(8)))
+print(mult_pairs(fibo51(8)))
 print(mult3([1.1, 1.2, 3.1, 5, 10.01])) #fibo5(8)))
 print(mult4(2)) #fibo5(8)))
 print(fibo5(8))
