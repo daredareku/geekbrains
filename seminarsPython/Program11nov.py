@@ -2,9 +2,7 @@
 import random
 # Урок 4. Данные, функции и модули в Python. Продолжение
 # 1. Вычислить число c заданной точностью d
-
 # Пример:
-
 # - при $d = 0.001, π = 3.141.$    $10^{-1} ≤ d ≤10^{-10}$
 def calc_pi(eps=1.0e-5):
     s=0
@@ -19,7 +17,6 @@ def calc_pi(eps=1.0e-5):
         d=d+2
 
 def Precision1(d):
-    #d=float(input("4. Введите точность: "))
     return calc_pi(d)
     
 # 2. Задайте натуральное число N. Напишите программу, которая составит список простых множителей числа N.
@@ -35,16 +32,11 @@ def Factor(n):
     if n > 1:
         Ans.append(n)
     return Ans
-#print(Factor(int(input())))
 
 def Simple2():
     d=float(input("2. Задайте натуральное: "))
     a=[i for i in range(2, d) if d%i==0]
-    
-    
     return d
-    
-    pass
     
 # 3. Задайте последовательность чисел. Напишите программу, которая выведет список неповторяющихся элементов исходной последовательности.
 def NonRepeating(a):
@@ -54,19 +46,16 @@ def NonRepeating(a):
     [new_lst.append(i) for i in lst if i not in new_lst]
     print(f"Список из неповторяющихся элементов: {new_lst}")
 
-def NonRepeating1():
+def NonRepeating1(a):
     b=sorted(a,key=lambda x: a.count(x)) # sort
-    for i in range(len(b)): #-1):
+    for i in range(len(b)): 
         if b[i]==b[i+1]:
-            #b.remove(b[i]) # remove last element from list, both elements
             continue
         else:
             print(b[i])
     
 # 4. Задана натуральная степень k. Сформировать случайным образом список коэффициентов (значения от 0 до 100) многочлена и записать в файл многочлен степени k.
-
 # Пример:
-
 # - k=2 => 2*x² + 4*x + 5 = 0 или x² + 5 = 0 или 10*x² = 0
 class cl4:
     def FilePoly(k):
@@ -212,19 +201,19 @@ class cl5:
     def create_mn_double():
         # создание двух файлов
 
-        k1 = int(input("Введите натуральную степень для первого файла k = "))
+        k1 = int(input("5. Введите натуральную степень для первого файла k = "))
         k2 = int(input("Введите натуральную степень для второго файла k = "))
         koef1 = cl5.create_mn(k1)
         koef2 = cl5.create_mn(k2)
-        cl5.write_file("file34_1.txt", cl5.create_str(koef1))
-        cl5.write_file("file34_2.txt", cl5.create_str(koef2))
+        cl5.write_file("file5_1.txt", cl5.create_str(koef1))
+        cl5.write_file("file5_2.txt", cl5.create_str(koef2))
 
     def create_sum():
         # нахождение суммы многочлена
 
-        with open('file34_1.txt', 'r') as data:
+        with open('file5_1.txt', 'r') as data:
             st1 = data.readlines()
-        with open('file34_2.txt', 'r') as data:
+        with open('file5_2.txt', 'r') as data:
             st2 = data.readlines()
         print(f"Первый многочлен {st1}")
         print(f"Второй многочлен {st2}")
@@ -242,8 +231,8 @@ class cl5:
             mm = len(lst2)
             for i in range(ll,mm):
                 lst_new.append(lst2[i])
-        cl5.write_file("file34_res.txt", cl5.create_str(lst_new))
-        with open('file34_res.txt', 'r') as data:
+        cl5.write_file("file5_res.txt", cl5.create_str(lst_new))
+        with open('file5_res.txt', 'r') as data:
             st3 = data.readlines()
         print(f"Результирующий многочлен {st3}")
 
@@ -294,9 +283,9 @@ print(round(Precision1(1e-5), 6))
 print("Список множителей")
 print(Factor(int(48)))
 print(NonRepeating(6))
-k = int(input("Введите натуральную степень k = "))
+k = int(input("4. Введите натуральную степень k = "))
 koef = cl4.create_mn(k)
 cl4.write_file(cl4.create_str(koef))
 cl5.create_mn_double()
 cl5.create_sum()
-#main()
+ 
