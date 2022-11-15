@@ -68,31 +68,185 @@ def NonRepeating1():
 # Пример:
 
 # - k=2 => 2*x² + 4*x + 5 = 0 или x² + 5 = 0 или 10*x² = 0
-def FilePoly(k):
-    k=k%100
-    a=[random.randint(1,100)  for i in range(0, k) ] # for i in range]
-    f=open("polynom.txt", "w")
-    for i in a:
-        f.write(str(i)+"\n")
-    f.close()
+class cl4:
+    def FilePoly(k):
+        k=k%100
+        a=[random.randint(1,100)  for i in range(0, k) ] # for i in range]
+        f=open("polynom.txt", "w")
+        for i in a:
+            f.write(str(i)+"\n")
+        f.close()
+
+    import random
+
+    def write_file(st):
+        with open('file44.txt', 'w') as data:
+            data.write(st)
+
+    def rnd():
+        return random.randint(0,101)
+
+    def create_mn(k):
+        lst = [cl4.rnd() for i in range(k+1)]
+        return lst
+        
+    def create_str(sp):
+        lst= sp[::-1]
+        wr = ''
+        if len(lst) < 1:
+            wr = 'x = 0'
+        else:
+            for i in range(len(lst)):
+                if i != len(lst) - 1 and lst[i] != 0 and i != len(lst) - 2:
+                    wr += f'{lst[i]}x^{len(lst)-i-1}'
+                    if lst[i+1] != 0:
+                        wr += ' + '
+                elif i == len(lst) - 2 and lst[i] != 0:
+                    wr += f'{lst[i]}x'
+                    if lst[i+1] != 0:
+                        wr += ' + '
+                elif i == len(lst) - 1 and lst[i] != 0:
+                    wr += f'{lst[i]} = 0'
+                elif i == len(lst) - 1 and lst[i] == 0:
+                    wr += ' = 0'
+        return wr
     
 # 5. Даны два файла, в каждом из которых находится запись многочлена. Задача - сформировать файл, содержащий сумму многочленов.
-def FileSumPolynom():
-    f1=open("polynom1.txt", "r")
-    f2=open("polynom2.txt", "r")
-    f3=open("polynom_out.txt", "w")
-    for line in f1:
-        a=line.split()
-        for i in a:
-            f3.write(i+" ")
-        f3.write("\n")
-        for line in f2:
+class cl5:
+    def FileSumPolynom():
+        f1=open("polynom1.txt", "r")
+        f2=open("polynom2.txt", "r")
+        f3=open("polynom_out.txt", "w")
+        for line in f1:
             a=line.split()
-        for i in a:
+            for i in a:
                 f3.write(i+" ")
-        f3.write("\n")
-    f3.close()
-    
+            f3.write("\n")
+            for line in f2:
+                a=line.split()
+            for i in a:
+                    f3.write(i+" ")
+            f3.write("\n")
+        f3.close()
+        
+    import random
+
+    # запись в файл
+    def write_file(name,st):
+        with open(name, 'w') as data:
+            data.write(st)
+
+    # создание случайного числа от 0 до 100
+    def rnd():
+        return random.randint(0,101)
+
+    # создание коэффициентов многочлена
+    def create_mn(k):
+        lst = [cl5.rnd() for i in range(k+1)]
+        return lst
+        
+    # создание многочлена в виде строки 
+    def create_str(sp):
+        lst= sp[::-1]
+        wr = ''
+        if len(lst) < 1:
+            wr = 'x = 0'
+        else:
+            for i in range(len(lst)):
+                if i != len(lst) - 1 and lst[i] != 0 and i != len(lst) - 2:
+                    wr += f'{lst[i]}x^{len(lst)-i-1}'
+                    if lst[i+1] != 0 or lst[i+2] != 0:
+                        wr += ' + '
+                elif i == len(lst) - 2 and lst[i] != 0:
+                    wr += f'{lst[i]}x'
+                    if lst[i+1] != 0 or lst[i+2] != 0:
+                        wr += ' + '
+                elif i == len(lst) - 1 and lst[i] != 0:
+                    wr += f'{lst[i]} = 0'
+                elif i == len(lst) - 1 and lst[i] == 0:
+                    wr += ' = 0'
+        return wr
+
+    # получение степени многочлена
+    def sq_mn(k):
+        if 'x^' in k:
+            i = k.find('^')
+            num = int(k[i+1:])
+        elif ('x' in k) and ('^' not in k):
+            num = 1
+        else:
+            num = -1
+        return num
+
+    # получение коэффицента члена многочлена
+    def k_mn(k):
+        if 'x' in k:
+            i = k.find('x')
+            num = int(k[:i])
+        return num
+
+    # разбор многочлена и получение его коэффициентов
+    def calc_mn(st):
+        st = st[0].replace(' ', '').split('=')
+        st = st[0].split('+')
+        lst = []
+        l = len(st)
+        k = 0
+        if cl5.sq_mn(st[-1]) == -1:
+            lst.append(int(st[-1]))
+            l -= 1
+            k = 1
+        i = 1 # степень
+        ii = l-1 # индекс
+        while ii >= 0:
+            if cl5.sq_mn(st[ii]) != -1 and cl5.sq_mn(st[ii]) == i:
+                lst.append(cl5.k_mn(st[ii]))
+                ii -= 1
+                i += 1
+            else:
+                lst.append(0)
+                i += 1
+            
+        return lst
+        
+    def create_mn_double():
+        # создание двух файлов
+
+        k1 = int(input("Введите натуральную степень для первого файла k = "))
+        k2 = int(input("Введите натуральную степень для второго файла k = "))
+        koef1 = cl5.create_mn(k1)
+        koef2 = cl5.create_mn(k2)
+        cl5.write_file("file34_1.txt", cl5.create_str(koef1))
+        cl5.write_file("file34_2.txt", cl5.create_str(koef2))
+
+    def create_sum():
+        # нахождение суммы многочлена
+
+        with open('file34_1.txt', 'r') as data:
+            st1 = data.readlines()
+        with open('file34_2.txt', 'r') as data:
+            st2 = data.readlines()
+        print(f"Первый многочлен {st1}")
+        print(f"Второй многочлен {st2}")
+        lst1 = cl5.calc_mn(st1)
+        lst2 = cl5.calc_mn(st2)
+        ll = len(lst1)
+        if len(lst1) > len(lst2):
+            ll = len(lst2)
+        lst_new = [lst1[i] + lst2[i] for i in range(ll)]
+        if len(lst1) > len(lst2):
+            mm = len(lst1)
+            for i in range(ll,mm):
+                lst_new.append(lst1[i])
+        else:
+            mm = len(lst2)
+            for i in range(ll,mm):
+                lst_new.append(lst2[i])
+        cl5.write_file("file34_res.txt", cl5.create_str(lst_new))
+        with open('file34_res.txt', 'r') as data:
+            st3 = data.readlines()
+        print(f"Результирующий многочлен {st3}")
+
 # 1. Задайте строку из набора чисел. Напишите программу, которая покажет большее и меньшее число. В качестве символа-разделителя используйте пробел.
 def MaxMin(): 
     print("1. Введите строку из чисел: ")
@@ -140,4 +294,9 @@ print(round(Precision1(1e-5), 6))
 print("Список множителей")
 print(Factor(int(48)))
 print(NonRepeating(6))
+k = int(input("Введите натуральную степень k = "))
+koef = cl4.create_mn(k)
+cl4.write_file(cl4.create_str(koef))
+cl5.create_mn_double()
+cl5.create_sum()
 #main()
