@@ -311,11 +311,14 @@ def decodingRLE(atxt):
     number = ''
     res = ''
     for i in range(len(atxt)):
-        if not atxt[i].isalpha():
+        if not atxt[i].isalpha() and atxt[i].isdigit():
             number += atxt[i]
         else:
-            res = res + (atxt[i] * int(number))
-            number = ''
+            try:
+                res = res + (atxt[i] * int(number))
+                number = ''
+            except:
+                res = res + atxt[i]
     return res
 
 def rle_decode(data): 
