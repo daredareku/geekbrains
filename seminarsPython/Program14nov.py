@@ -339,12 +339,11 @@ def rle_decode(data):
      
 aDelete()    
 candy()
-
 print("*" * 10, " 3. Игра Крестики-нолики для двух игроков ", "*" * 10)
 board = []
-input("Нажмите Enter для выхода!")
+print("Нажмите Enter для выхода!")
 board = list(range(1,13)) 
-# Copilot helper
 crestikiNoliki()
 atxt=input("4. Введите текст для кодировки: ")
 aRLE(atxt)
+# Copilot helper
