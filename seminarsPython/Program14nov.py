@@ -29,7 +29,6 @@ def candy():
         candyBot()
     elif a==2:
         print("Игра с другом")
-        #print('Not Implemented')
         print("Human with human")
         candyHumanwithhuman()
     elif a==3:
