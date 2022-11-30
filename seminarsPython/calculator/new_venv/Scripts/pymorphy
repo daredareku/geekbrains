@@ -1,0 +1,4 @@
+#!c:\1\downloads\github\kgb\c#\testnewrepo2022\seminarspython\calculator\new_venv\scripts\python.exe
+import sys
+from pymorphy2 import cli
+sys.exit(cli.main())

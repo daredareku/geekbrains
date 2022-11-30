@@ -1,0 +1,15 @@
+2022-11-25 13:02:39.33 INFO in 'deeppavlov.core.common.file'['file'] at line 32: Interpreting 'syntax_ru_syntagrus_bert' as 'C:\Users\AdeptsCultBaumWelch\miniconda3_py37\lib\site-packages\deeppavlov\configs\syntax\syntax_ru_syntagrus_bert.json'
+2022-11-25 13:02:41.104 WARNING in 'deeppavlov.utils.pip_wrapper.pip_wrapper'['pip_wrapper'] at line 34: found tensorflow-gpu installed, so upgrading it instead of tensorflow
+
+[notice] A new release of pip available: 22.2.2 -> 22.3.1
+[notice] To update, run: C:\Users\AdeptsCultBaumWelch\miniconda3_py37\python.exe -m pip install --upgrade pip
+  Running command git clone --filter=blob:none --quiet https://github.com/andersjo/dependency_decoding.git 'C:\Users\ADEPTS~1\AppData\Local\Temp\pip-req-build-tgwmi_1h'
+  Running command git rev-parse -q --verify 'sha^79510908223b93bd4c1fb0409a2a66dd75577c2c'
+  Running command git fetch -q https://github.com/andersjo/dependency_decoding.git 79510908223b93bd4c1fb0409a2a66dd75577c2c
+
+[notice] A new release of pip available: 22.2.2 -> 22.3.1
+[notice] To update, run: C:\Users\AdeptsCultBaumWelch\miniconda3_py37\python.exe -m pip install --upgrade pip
+  Running command git clone --filter=blob:none --quiet https://github.com/deepmipt/bert.git 'C:\Users\ADEPTS~1\AppData\Local\Temp\pip-req-build-byg9oenj'
+
+[notice] A new release of pip available: 22.2.2 -> 22.3.1
+[notice] To update, run: C:\Users\AdeptsCultBaumWelch\miniconda3_py37\python.exe -m pip install --upgrade pip
