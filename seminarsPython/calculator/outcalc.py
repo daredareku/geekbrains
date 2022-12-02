@@ -3,4 +3,4 @@
 from calc import *
 from inp import *
 myOutput(calculate(
-myInput(), myInput(), myInput()))
+myInput(), myInput(), myInputop()))

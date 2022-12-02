@@ -1,4 +1,4 @@
-
+DEBUG=False
 from import_data import import_data
 from export_data import export_data
 from print_data import print_data
@@ -16,10 +16,13 @@ def input_data():
     return [last_name, first_name, phone_number, note]
 
 def choice_sep():
-    sep = input("Введите разделитель: ")
-    if sep == "":
-        sep = None
-    return sep
+    if DEBUG is False: 
+        return ","
+    else:
+        sep = input("Введите разделитель: ")
+        if sep == "":
+            sep = None
+        return sep
 
 def choice_todo():
     print("Что желаем сделать:\n\
