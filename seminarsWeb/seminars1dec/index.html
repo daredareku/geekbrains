@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+<!-- Доделать калькулятор из лекции, сделать 4 действия, при делении должен выводиться текст ошибки. -->
+</head>
+<body>
+    <h1>Калькулятор</h1>
+    <input type="text" id="val1" value="0">
+    <button onclick="calc()">+</button>
+    <button onclick="calc2()">-</button>
+    <button onclick="calc3()">*</button>
+    <button onclick="calc4()">/</button>
+    
+    <input type="text" id="val2" value="0">
+    =
+
+    <input type="text" id="result" readonly value="0">
+<br><br>
+
+<script>
+
+    function calc4() {
+        var val1 = parseFloat(document.getElementById("val1").value);
+        var val2 = parseFloat(document.getElementById("val2").value);
+    
+                
+        result = (val2 != 0) ? val1 / val2 : "Деление на ноль";
+            
+        document.getElementById("result").value = result;
+    }
+    
+    function calc3() {
+        var val1 = parseFloat(document.getElementById("val1").value);
+        var val2 = parseFloat(document.getElementById("val2").value);
+    
+        const result = val1 * val2;
+    
+        
+        document.getElementById("result").value = result;
+    }
+    
+    function calc2() { // выводиться вычитание
+        var val1 = parseFloat(document.getElementById("val1").value);
+        var val2 = parseFloat(document.getElementById("val2").value);
+    
+        const result = val1 - val2;
+    
+        
+        document.getElementById("result").value = result;
+    }
+        
+
+    function calc() {
+        var val1 = parseFloat(document.getElementById("val1").value);
+        var val2 = parseFloat(document.getElementById("val2").value);
+
+        const result = val1 + val2;
+
+    
+        document.getElementById("result").value = result;
+    }
+
+</script>
+</body>
+</html>
