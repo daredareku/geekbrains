@@ -1,0 +1,49 @@
+Автор  юзал впервые сложную CNN нейросеть еще в 2017 году – это была RocAlphaGo, программа на Питоне, которая играет на приличном уровне в игру ГО, от Рочестерского Университета, которую автор перевел с языка Python 2 на язык Python 3..
+Автор предложит пример обучения нейронной сети на этом датасете с использованием сверточных слоев. Вот пример кода:
+
+import tensorflow as tf
+from tensorflow.keras.datasets import mnist
+from tensorflow.keras.models import Sequential
+from tensorflow.keras.layers import Conv2D, MaxPooling2D, Flatten, Dense, Dropout
+from tensorflow.keras.optimizers import Adam
+
+# Загрузка датасета MNIST
+(x_train, y_train), (x_test, y_test) = mnist.load_data()
+
+# Нормализация данных
+x_train = x_train / 255.0
+x_test = x_test / 255.0
+
+# Преобразование меток классов в бинарный формат
+y_train = tf.keras.utils.to_categorical(y_train, num_classes=10)
+y_test = tf.keras.utils.to_categorical(y_test, num_classes=10)
+
+# Создание модели нейронной сети
+model = Sequential([
+    Conv2D(filters=32, kernel_size=(3,3), activation='relu', input_shape=(28,28,1)),
+    MaxPooling2D(pool_size=(2,2)),
+    Dropout(0.25),
+    Flatten(),
+    Dense(units=128, activation='relu'),
+    Dropout(0.5),
+    Dense(units=10, activation='softmax')
+])
+
+# Компиляция модели
+model.compile(optimizer=Adam(learning_rate=0.001), loss='categorical_crossentropy', metrics=['accuracy'])
+
+# Обучение модели
+model.fit(x_train.reshape(-1, 28, 28, 1), y_train, epochs=10, batch_size=128, validation_data=(x_test.reshape(-1, 28, 28, 1), y_test))
+
+# Оценка точности модели на тестовых данных
+accuracy = model.evaluate(x_test.reshape(-1, 28, 28, 1), y_test)[1]
+print(f'Test accuracy: {accuracy}')
+На входе 28 на 28 пикселей, а через Дропауты уменьшаем переобучение, на выходе 10 вариантов юнитов, и 32 filters сверточные слои
+должны улучшать распознавание. Вот копия https://colab.research.google.com/drive/1oOpVm9yr_LoyAS_XLDHiqZF54DrDe2Fv 
+Test accuracy: 0.9876999855041504 Результат обучения данной модели на датасете MNIST сравним с 99%. Это значительно лучше, 
+чем результат, полученный на уроке с использованием полносвязной нейронной сети (около 97%).
+Улучшение точности модели было достигнуто за счет использования сверточных слоев, которые могут выделять важные признаки из изображения, а также за счет добавления dropout-слоев, которые помогают бороться с переобучением.
+Команды Keras, которые не были рассмотрены на уроке:
+•	tf.keras.callbacks: модуль с колбэками, которые могут быть использованы во время обучения модели, например, для сохранения весов модели во время обучения или для остановки обучения раннее, если достигнута определенная точность.
+•	tf.keras.preprocessing.image: модуль с инструментами для обработки изображений, например, для поворота, растяжения, изменения размера и т.д.
+•	tf.keras.applications: модуль, который содержит предварительно обученные модели нейронных сетей, которые могут быть использованы для решения различных задач, например, распознавания изображений или классификации текста. Кроме того, этот модуль содержит инструменты для загрузки и предобработки данных для обучения этих моделей.
