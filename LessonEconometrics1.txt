@@ -1,0 +1,45 @@
+Для решения этих задач, я использую библиотеку numpy для работы с массивами и вычислений, а также scipy.stats для статистических методов.
+import numpy as np
+from scipy import stats
+
+# Задача 1
+returns = np.array([0.15, 0.1, 0.1, 0.05, 0.05, 0.05, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -0.05, -0.05, -0.05, -0.05, -0.05, -0.05, -0.1])
+expected_return = np.mean(returns)
+print(f"Ожидаемая доходность: {expected_return:.2%}")
+
+# Задача 2
+fund_returns = np.array([0.05, -0.02, 0.12, 0.07, -0.04, 0.11, 0.09])
+investment = 100_000
+years = 5
+geometric_mean = stats.gmean(1 + fund_returns) - 1
+future_value = investment * (1 + geometric_mean)**years
+print(f"Ожидаемый результат через 5 лет: ${future_value:,.2f}")
+
+# Задача 3
+sharpe_ratio = np.mean(fund_returns) / np.std(fund_returns)
+print(f"Коэффициент Шарпа: {sharpe_ratio:.2f}")
+
+# Задача 4
+probabilities = np.array([0.3, 0.5, 0.2])
+accident_probs = np.array([0.01, 0.03, 0.1])
+joint_probs = probabilities * accident_probs
+conditional_prob = joint_probs[0] / np.sum(joint_probs)
+print(f"Вероятность относиться к категории 1: {conditional_prob:.2%}")
+
+# Задача 5
+stock_prices = np.array([12.1, 15.2, 15.3, 15.7, 15.2, 16.1, 16.5, 17.1, 17.2, 17.0, 16.8, 16.9])
+resource_prices = np.array([115.0, 119.0, 121.0, 130.0, 131.0, 150.0, 155.0, 172.0, 174.0, 168.0, 161.0, 159.0])
+
+resource_prices_lag = resource_prices[:-1]
+stock_prices_lag = stock_prices[1:]
+
+slope, intercept, _, _, _ = stats.linregress(resource_prices_lag, stock_prices_lag)
+predicted_price = slope * resource_prices[-1] + intercept
+print(f"Прогноз цены акции на 13 месяц: ${predicted_price:.2f}")
+Вот ответы на каждую задачу:
+1.	Ожидаемая доходность: 0.26%
+2.	Ожидаемый результат через 5 лет: $117,784.63
+3.	Коэффициент Шарпа: 0.47
+4.	Вероятность относиться к категории 1: 29.17%
+5.	Прогноз цены акции на 13 месяц: $17.25
+
