@@ -1,0 +1,134 @@
+Урок 3. TensorFlow
+Попробуйте улучшить работу нейронной сети (разобранную на уроке), обучавшейся на датасет Fashion-MNIST. Напишите в комментариях к уроку, какого результата вы добились от нейросети и что помогло улучшить её точность
+Поработайте с документацией TensorFlow 2. Попробуйте найти полезные команды TensorFlow, неразобранные на уроке
+•	Попробуйте обучить нейронную сеть на TensorFlow 2 на датасете imdb_reviews.
+Напишите в комментариях к уроку, какого результата вы добились от нейросети и что
+помогло улучшить её точность. 
+
+ Автор может привести примеры кода и объяснить некоторые полезные команды TensorFlow 2.
+Пример кода для улучшения точности нейронной сети Fashion-MNIST:
+
+import tensorflow as tf
+from tensorflow.keras.datasets import fashion_mnist
+
+# Загрузка датасета
+(train_images, train_labels), (test_images, test_labels) = fashion_mnist.load_data()
+
+# Нормализация изображений
+train_images = train_images / 255.0
+test_images = test_images / 255.0
+
+# Создание модели
+model = tf.keras.Sequential([
+    tf.keras.layers.Flatten(input_shape=(28, 28)),
+    tf.keras.layers.Dense(128, activation='relu'),
+    tf.keras.layers.Dense(64, activation='relu'),
+    tf.keras.layers.Dense(10, activation='softmax')
+])
+
+# Компиляция модели
+model.compile(optimizer='adam',
+              loss='sparse_categorical_crossentropy',
+              metrics=['accuracy'])
+
+# Обучение модели
+model.fit(train_images, train_labels, epochs=10, validation_split=0.2)
+
+# Оценка точности на тестовых данных
+test_loss, test_acc = model.evaluate(test_images, test_labels, verbose=2)
+print('\nТочность на тестовых данных:', test_acc)
+Прогон: val_accuracy: 0.8798
+313/313 - 1s - loss: 0.3696 - accuracy: 0.8723 - 591ms/epoch - 2ms/step
+Вот копия блокнота: https://colab.research.google.com/drive/1iJ7oMxcnhsRWP1kRQKaCGYEqVnJ4yL_g 
+Точность на тестовых данных: 0.8723000288009644 .
+Чтобы улучшить точность модели, можно попробовать следующие способы:
+•	Изменение архитектуры модели, добавление или удаление слоев
+•	Изменение параметров слоев, таких как количество нейронов или функции активации
+•	Использование регуляризации, например, L1 или L2 регуляризации, чтобы предотвратить переобучение модели
+•	Использование различных оптимизаторов, например, SGD, RMSprop или Adam
+
+Есть много полезных команд в TensorFlow 2, помимо .fit и .predict. Вот несколько примеров:
+1.	.compile - метод, который задает параметры компиляции модели, такие как оптимизатор, функция потерь и метрики. Например:
+model = tf.keras.Sequential([
+    tf.keras.layers.Dense(64, activation='relu'),
+    tf.keras.layers.Dense(10, activation='softmax')
+])
+
+model.compile(optimizer='adam',
+              loss='categorical_crossentropy',
+              metrics=['accuracy'])
+2.	.summary - метод, который выводит краткое описание модели, включая количество параметров и форму каждого слоя. Например:
+model = tf.keras.Sequential([
+    tf.keras.layers.Conv2D(32, (3, 3), activation='relu', input_shape=(28, 28, 1)),
+    tf.keras.layers.MaxPooling2D((2, 2)),
+    tf.keras.layers.Flatten(),
+    tf.keras.layers.Dense(10, activation='softmax')
+])
+
+model.summary()
+3.	.evaluate - метод, который оценивает производительность модели на тестовых данных, используя заданные метрики. Например:
+test_loss, test_acc = model.evaluate(test_images, test_labels, verbose=2)
+print('\nТочность на тестовых данных:', test_acc)
+4.	.fit_generator - метод, который обучает модель, используя генераторы данных вместо массивов numpy. Это может быть полезно при работе с большими наборами данных, которые не могут поместиться в память одновременно. Например:
+train_generator = train_datagen.flow_from_directory(
+        'train_dir',
+        target_size=(150, 150),
+        batch_size=32,
+        class_mode='binary')
+
+model.fit_generator(
+        train_generator,
+        steps_per_epoch=2000,
+        epochs=50,
+        validation_data=validation_generator,
+        validation_steps=800)
+5.	.save и .load_model - методы, которые позволяют сохранить и загрузить модель в файл. Например:
+model.save('my_model.h5')
+
+new_model = tf.keras.models.load_model('my_model.h5')
+Это лишь несколько примеров из множества доступных команд в TensorFlow 2. Документация TensorFlow предлагает обширный список методов и атрибутов, которые могут быть использованы для работы с моделями машинного обучения.
+
+
+Пример кода для обучения нейронной сети на датасете imdb_reviews:
+import tensorflow as tf
+from tensorflow.keras.datasets import imdb
+from tensorflow.keras.preprocessing.sequence import pad_sequences
+
+# Загрузка датасета
+(train_data, train_labels), (test_data, test_labels) = imdb.load_data(num_words=10000)
+
+# Предобработка данных
+train_data = pad_sequences(train_data, value=0, padding='post', maxlen=256)
+test_data = pad_sequences(test_data, value=0, padding='post', maxlen=256)
+
+# Создание модели
+model = tf.keras.Sequential([
+    tf.keras.layers.Embedding(input_dim=10000, output_dim=16),
+    tf.keras.layers.GlobalAveragePooling1D(),
+    tf.keras.layers.Dense(16, activation='relu'),
+    tf.keras.layers.Dense(1, activation='sigmoid')
+])
+
+# Компиляция модели
+model.compile(optimizer='adam',
+              loss='binary_crossentropy',
+              metrics=['accuracy'])
+
+# Обучение модели
+model.fit(train_data, train_labels, epochs=10, validation_split=0.2)
+
+# Оценка точности на тестовых данных
+test_loss, test_acc = model.evaluate(test_data, test_labels, verbose=2)
+print('\nТочность на тестовых данных:', test_acc)
+Прогон на данных: val_accuracy: 0.8804
+782/782 - 1s - loss: 0.4538 - accuracy: 0.8612 - 1s/epoch - 2ms/step
+
+Точность на тестовых данных: 0.8611999750137329 
+Вот копия блокнота: https://colab.research.google.com/drive/1zxkYBYiovj-S-eW3BOVcRUIKwAp5rIG6 
+Для улучшения точности модели на датасете imdb_reviews можно попробовать следующие способы:
+•	Изменение размера слоя Embedding и/или параметра num_words при загрузке датасета
+•	Изменение количества слоев или размерности скрытых слоев
+•	Использование других функций активации, таких как tanh или softmax
+•	Использование другого оптимизатора, например, RMSprop или Adagrad
+•	Использование рекуррентных нейронных сетей, таких как LSTM или GRU, вместо простых нейронных сетей.
+
