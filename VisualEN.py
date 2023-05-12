@@ -5,6 +5,50 @@ import matplotlib.pyplot as plt
 #1.1. Load data from a CSV file located on a web server.
 df = pd.read_csv('https://gbcdn.mrgcdn.ru/uploads/asset/4266730/attachment/08ec55854637add5247d22396d0f7456.csv')
 
+# Replace 'Price, rubles' with the correct column name
+df['price'].hist(bins=20, grid=True)
+plt.xlabel('Price, rubles.')
+plt.ylabel('Number of listings')
+plt.title('Distribution of prices')
+plt.show()
+
+# Replace 'Price, rubles' with the correct column name
+df.plot.scatter(x='area, sq. m.', y='price', alpha=0.5)
+plt.xlabel('Area, sq. m.')
+plt.ylabel('Price, rubles')
+plt.title('Relationship between area and price')
+plt.show()
+
+# Replace 'Price, rubles' with the correct column name
+df.plot.scatter(x='Number of rooms', y='Price', alpha=0.5)
+plt.xlabel('Number of rooms')
+plt.ylabel('Price, rubles')
+plt.title('Relationship between the number of rooms and price')
+plt.show()
+
+# Replace 'Price, rubles' with the correct column name
+df.plot.scatter(x='District name', y='Price', alpha=0.5)
+plt.xlabel('District name')
+plt.ylabel('Price, rubles')
+plt.title('Relationship between district and price')
+plt.show()
+
+# Replace 'Price, rubles' with the correct column name
+df.boxplot(column='Price', by='District name')
+plt.xlabel('District name')
+plt.ylabel('Price, rubles')
+plt.title('Relationship between price and district name')
+plt.show()
+
+# Replace 'Price, rubles' with the correct column name
+df.boxplot(column='Price', by='House type')
+plt.xlabel('House type')
+plt.ylabel('Price, rubles')
+plt.title('Relationship between price and house type')
+plt.show()
+
+
+
 #1.2. Plot a histogram of the distribution of prices.
 # Set the x-axis label to 'Price, rubles.'
 # Set the y-axis label to 'Number of listings.'
