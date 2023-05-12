@@ -1,0 +1,123 @@
+Теория вероятностей и математическая статистика (семинары)
+Урок 10. Дисперсионный анализ
+Провести дисперсионный анализ для определения того, есть ли различия среднего роста среди взрослых футболистов, хоккеистов и штангистов.
+Даны значения роста в трех группах случайно выбранных спортсменов:
+Футболисты: 173, 175, 180, 178, 177, 185, 183, 182.
+Хоккеисты: 177, 179, 180, 188, 177, 172, 171, 184, 180.
+Штангисты: 172, 173, 169, 177, 166, 180, 178, 177, 172, 166, 170. 
+
+Для проведения дисперсионного анализа в Python необходимо выполнить следующие шаги:
+1.	Импортировать библиотеку scipy.stats.
+2.	Создать три массива данных для каждой группы спортсменов.
+3.	Вычислить общее среднее значение роста всех спортсменов.
+4.	Вычислить среднее значение роста для каждой группы спортсменов.
+5.	Вычислить сумму квадратов отклонений каждого значения роста от общего среднего.
+6.	Вычислить сумму квадратов отклонений средних значений групп от общего среднего.
+7.	Вычислить остаточную сумму квадратов отклонений, которая представляет собой сумму квадратов отклонений каждого значения роста от среднего значения своей группы.
+8.	Вычислить общую дисперсию и межгрупповую дисперсию.
+9.	Вычислить статистику F и соответствующее ей p-значение.
+10.	Проанализировать полученные результаты и сделать выводы.
+
+Вот пример кода:
+from scipy.stats import f_oneway
+
+# Создаем массивы данных для каждой группы спортсменов
+football_players = [173, 175, 180, 178, 177, 185, 183, 182]
+hockey_players = [177, 179, 180, 188, 177, 172, 171, 184, 180]
+weightlifters = [172, 173, 169, 177, 166, 180, 178, 177, 172, 166, 170]
+
+# Вычисляем общее среднее значение роста всех спортсменов
+mean_height = sum(football_players + hockey_players + weightlifters) / len(football_players + hockey_players + weightlifters)
+
+# Вычисляем средние значения роста для каждой группы спортсменов
+mean_football = sum(football_players) / len(football_players)
+mean_hockey = sum(hockey_players) / len(hockey_players)
+mean_weightlifting = sum(weightlifters) / len(weightlifters)
+
+# Вычисляем сумму квадратов отклонений каждого значения роста от общего среднего
+SS_total = sum((x - mean_height) ** 2 for x in football_players + hockey_players + weightlifters)
+
+# Вычисляем сумму квадратов отклонений средних значений групп от общего среднего
+SS_between = len(football_players) * (mean_football - mean_height) ** 2
+SS_between += len(hockey_players) * (mean_hockey - mean_height) ** 2
+SS_between += len(weightlifters) * (mean_weightlifting - mean_height) ** 2
+
+# Вычисляем остаточную сумму квадратов отклонений
+SS_within = sum((x - mean_football) ** 2 for x in football_players)
+SS_within += sum((x - mean_hockey) ** 2 for x in hockey_players)
+SS_within += sum((x - mean_weightlifting) ** 2 for x in weightlifters)
+
+# Вычисляем общую дисперсию и межгрупповую дисперсию
+df_between = 3 - 1
+df_within = len(football_players + hockey_players + weightlifters) - 3
+MS_between = SS_between / df_between
+MS_within = SS_within / df_within
+
+# Вычисляем статистику F и соответствующее ей p-значение
+F = MS_between / MS_within
+p_value = f_oneway(football_players, hockey_players, weightlifters)[1]
+
+# Выводим результаты
+print("F-статистика:", F)
+print("p-значение:", p_value)
+
+if p_value < 0.05:
+    print("Различие между средними значениями роста в группах статистически значимо")
+else:
+    print("Различия между средними значениями роста в группах не обнаружено")
+В результате выполнения кода будет выведена статистика F и соответствующее ей p-значение. Если p-значение меньше выбранного уровня значимости (обычно 0.05), то можно сделать вывод о наличии статистически значимых различий между средними значениями роста в группах спортсменов. В противном случае, различий между средними значениями роста в группах не обнаружено.
+
+Sure, here's the Python code for the one-way ANOVA analysis:
+import numpy as np
+from scipy.stats import f_oneway
+
+# Define the data for each group
+football_players = np.array([173, 175, 180, 178, 177, 185, 183, 182])
+hockey_players = np.array([177, 179, 180, 188, 177, 172, 171, 184, 180])
+weightlifters = np.array([172, 173, 169, 177, 166, 180, 178, 177, 172, 166, 170])
+
+# Compute the mean height for each group
+mean_football = np.mean(football_players)
+mean_hockey = np.mean(hockey_players)
+mean_weightlifting = np.mean(weightlifters)
+
+# Compute the overall mean height
+overall_mean = np.mean(np.concatenate((football_players, hockey_players, weightlifters)))
+
+# Compute the sum of squares between groups
+ss_between = (len(football_players) * (mean_football - overall_mean) ** 2
+              + len(hockey_players) * (mean_hockey - overall_mean) ** 2
+              + len(weightlifters) * (mean_weightlifting - overall_mean) ** 2)
+
+# Compute the sum of squares within groups
+ss_within = ((len(football_players) - 1) * np.var(football_players, ddof=1)
+             + (len(hockey_players) - 1) * np.var(hockey_players, ddof=1)
+             + (len(weightlifters) - 1) * np.var(weightlifters, ddof=1))
+
+# Compute the degrees of freedom between and within groups
+df_between = 3 - 1
+df_within = len(football_players) + len(hockey_players) + len(weightlifters) - 3
+
+# Compute the mean squares between and within groups
+ms_between = ss_between / df_between
+ms_within = ss_within / df_within
+
+# Compute the F-statistic and its p-value
+f_statistic = ms_between / ms_within
+p_value = f_oneway(football_players, hockey_players, weightlifters)[1]
+
+# Print the results
+print("F-statistic:", f_statistic)
+print("p-value:", p_value)
+
+if p_value < 0.05:
+    print("There is a significant difference between the mean heights of the three groups.")
+else:
+    print("There is no significant difference between the mean heights of the three groups.")
+
+#
+Вывод Программы:
+F-statistic: 5.500053450812598
+p-value: 0.010482206918698693
+There is a significant difference between the mean heights of the three groups.
+Различие между средними значениями роста в группах статистически значимо.
