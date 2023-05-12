@@ -1,0 +1,73 @@
+Базы данных и SQL (семинары)
+Урок 6. SQL – Транзакции. Временные таблицы, управляющие конструкции, циклы
+1) Создайте функцию, которая принимает кол-во сек и форматирует их в кол-во дней, часов, минут и секунд.
+Пример: 123456 ->'1 days 10 hours 17 minutes 36 seconds '
+2) Выведите только четные числа от 1 до 10 включительно.
+Пример: 2,4,6,8,10 (можно сделать через шаг + 2: х = 2, х+=2) Write code:
+
+Вот пример кода на языке SQL для создания функции, которая принимает кол-во секунд и форматирует их в кол-во дней, часов, минут и секунд:
+basic
+Copy
+CREATE FUNCTION FormatSeconds (@seconds INT)
+RETURNS VARCHAR(100)
+AS
+BEGIN
+  DECLARE @days INT, @hours INT, @minutes INT, @remainingSeconds INT
+  SET @days = @seconds / (24 * 60 * 60)
+  SET @remainingSeconds = @seconds % (24 * 60 * 60)
+  SET @hours = @remainingSeconds / (60 * 60)
+  SET @remainingSeconds = @remainingSeconds % (60 * 60)
+  SET @minutes = @remainingSeconds / 60
+  SET @remainingSeconds = @remainingSeconds % 60
+  RETURN CAST(@days AS VARCHAR(10)) + ' days ' +
+         CAST(@hours AS VARCHAR(10)) + ' hours ' +
+         CAST(@minutes AS VARCHAR(10)) + ' minutes ' +
+         CAST(@remainingSeconds AS VARCHAR(10)) + ' seconds '
+END
+Функция начинается с ключевого слова CREATE FUNCTION, за которым следует имя функции (FormatSeconds), и параметры в скобках (@seconds INT). Затем функция содержит блок BEGIN и END, в которых выполняется форматирование переданного кол-ва секунд в кол-во дней, часов, минут и секунд.
+Затем функция возвращает отформатированную строку с помощью оператора RETURN. Функция использует переменные @days, @hours, @minutes и @remainingSeconds для вычисления количества дней, часов, минут и секунд в переданном кол-ве секунд.
+Пример вызова функции:
+Copy
+SELECT dbo.FormatSeconds(123456) AS FormattedSeconds
+Результат выполнения запроса будет следующим:
+asciidoc
+Copy
+FormattedSeconds
+---------------------
+1 days 10 hours 17 minutes 36 seconds 
+
+
+Вот пример кода на языке SQL Server T-SQL для создания функции и вывода четных чисел от 1 до 10 включительно:
+basic
+Copy
+-- Создание функции для форматирования секунд
+CREATE FUNCTION FormatSeconds (@seconds INT)
+RETURNS NVARCHAR(100)
+AS
+BEGIN
+  DECLARE @days INT, @hours INT, @minutes INT, @remainingSeconds INT
+  SET @days = @seconds / (24 * 60 * 60)
+  SET @remainingSeconds = @seconds % (24 * 60 * 60)
+  SET @hours = @remainingSeconds / (60 * 60)
+  SET @remainingSeconds = @remainingSeconds % (60 * 60)
+  SET @minutes = @remainingSeconds / 60
+  SET @remainingSeconds = @remainingSeconds % 60
+  RETURN CAST(@days AS NVARCHAR(10)) + ' days ' +
+         CAST(@hours AS NVARCHAR(10)) + ' hours ' +
+         CAST(@minutes AS NVARCHAR(10)) + ' minutes ' +
+         CAST(@remainingSeconds AS NVARCHAR(10)) + ' seconds '
+END
+
+-- Вызов функции для форматирования секунд
+SELECT dbo.FormatSeconds(123456) AS FormattedSeconds
+
+-- Вывод только четных чисел от 1 до 10
+DECLARE @x INT = 2
+WHILE @x <= 10
+BEGIN
+  PRINT @x
+  SET @x += 2
+END
+Заметьте, что функция создается с помощью ключевого слова CREATE FUNCTION и принимает один параметр типа INT. В теле функции выполняется расчет количества дней, часов, минут и секунд на основе переданного количества секунд, и форматированный результат возвращается в виде строки.
+Чтобы вывести только четные числа от 1 до 10, я использовал цикл WHILE с переменной @x, которая начинается с 2 и увеличивается на 2 на каждой итерации. Ключевое слово PRINT используется для вывода значения переменной на экран.
+
