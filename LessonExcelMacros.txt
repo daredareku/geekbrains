@@ -1,0 +1,29 @@
+Код для макроса, который выделяет желтым цветом столбец данных целиком:
+
+Sub HighlightColumn()
+    'Activate the first cell in the selected column and select the entire column
+    ActiveCell.EntireColumn.Select
+    'Set the background color of the selected cells to yellow
+    Selection.Interior.Color = vbYellow
+End Sub
+
+Этот макрос можно вызвать, выбрав любую ячейку в столбце, который нужно выделить, и нажав на кнопку, которую мы создадим в следующем шаге.
+Код для создания кнопки на листе, которая активирует макрос:
+Sub CreateButton()
+    'Add a button to the worksheet
+    ActiveSheet.Buttons.Add(10, 10, 100, 30).Select
+    With Selection
+        'Set the button caption
+        .Caption = "Highlight Column"
+        'Assign the HighlightColumn macro to the button
+        .OnAction = "HighlightColumn"
+    End With
+End Sub
+Этот макрос создаст кнопку на активном листе, которая будет вызывать макрос HighlightColumn при нажатии.
+Код для пользовательской функции, которая возвращает модуль разницы двух аргументов:
+Function AbsDiff(a As Double, b As Double) As Double
+    'Compute the absolute difference between a and b
+    AbsDiff = Abs(a - b)
+End Function
+Эта пользовательская функция может быть использована в ячейке Excel как обычная встроенная функция. Например, чтобы вычислить модуль разницы между значениями в ячейках A1 и B1, можно ввести формулу =AbsDiff(A1,B1) в любую другую ячейку на листе.
+
